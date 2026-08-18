@@ -1,0 +1,10 @@
+{
+  "status": "success",
+  "model_version": "football-ensemble-v1",
+  "ensemble_weights": {
+    "CatBoost": 0.5,
+    "DixonColes": 0.5
+  },
+  "trained_matches": 1140,
+  "trained_date": "2026-08-18"
+}

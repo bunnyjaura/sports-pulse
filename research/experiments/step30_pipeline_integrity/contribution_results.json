@@ -1,0 +1,4 @@
+{
+  "featureContributionsExposed": true,
+  "contributionFormula": "effectiveWeight * rawFeatureValue"
+}

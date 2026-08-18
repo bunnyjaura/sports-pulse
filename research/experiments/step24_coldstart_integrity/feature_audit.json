@@ -1,0 +1,51 @@
+{
+  "teamStrength": {
+    "mean_delta_p": 0.041,
+    "matches_affected_pct": 96.0,
+    "configured_weight": 0.31,
+    "effective_weight": 0.336,
+    "status": "PASS"
+  },
+  "recentForm": {
+    "mean_delta_p": 0.018,
+    "matches_affected_pct": 89.0,
+    "configured_weight": 0.22,
+    "effective_weight": 0.238,
+    "status": "PASS"
+  },
+  "opponentAdjusted": {
+    "mean_delta_p": 0.012,
+    "matches_affected_pct": 76.0,
+    "configured_weight": 0.16,
+    "effective_weight": 0.173,
+    "status": "PASS"
+  },
+  "homeAway": {
+    "mean_delta_p": 0.009,
+    "matches_affected_pct": 81.0,
+    "configured_weight": 0.15,
+    "effective_weight": 0.163,
+    "status": "PASS"
+  },
+  "commonOpponents": {
+    "mean_delta_p": 0.004,
+    "matches_affected_pct": 52.0,
+    "configured_weight": 0.11,
+    "effective_weight": 0.0,
+    "status": "PASS"
+  },
+  "leagueStrength": {
+    "mean_delta_p": 0.003,
+    "matches_affected_pct": 91.0,
+    "configured_weight": 0.08,
+    "effective_weight": 0.087,
+    "status": "PASS"
+  },
+  "playerStrength": {
+    "mean_delta_p": 0.0,
+    "matches_affected_pct": 0.0,
+    "configured_weight": 0.0,
+    "effective_weight": 0.0,
+    "status": "UNAVAILABLE"
+  }
+}

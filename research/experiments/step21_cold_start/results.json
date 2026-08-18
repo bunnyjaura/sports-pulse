@@ -1,0 +1,26 @@
+{
+  "status": "PASS",
+  "model_version_frozen": "football-ensemble-v1",
+  "model_version_coldstart": "football-coldstart-v1",
+  "all_tests_passed": true,
+  "backtest_summary": {
+    "FULL_HISTORY (N >= 50)": {
+      "count": 1200,
+      "acc": 0.448,
+      "log_loss": 1.0725,
+      "brier": 0.6491
+    },
+    "LIMITED_HISTORY (N 1-49)": {
+      "count": 350,
+      "acc": 0.422,
+      "log_loss": 1.0854,
+      "brier": 0.6582
+    },
+    "COLD_START (N = 0)": {
+      "count": 180,
+      "acc": 0.405,
+      "log_loss": 1.0941,
+      "brier": 0.6645
+    }
+  }
+}

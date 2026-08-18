@@ -1,0 +1,9 @@
+{
+  "status": "SUCCESS",
+  "match_count": 3504,
+  "holdout_period": "2023-07-01 to 2025-06-30",
+  "v1_log_loss": 1.0854,
+  "v2_log_loss": 1.0612,
+  "v2_accuracy": 0.435,
+  "v2_brier": 0.6421
+}

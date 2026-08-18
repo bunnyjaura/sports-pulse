@@ -1,0 +1,7 @@
+{
+  "accuracy": 0.72,
+  "brierScore": 0.185,
+  "logLoss": 0.542,
+  "ece": 0.045,
+  "calibrationStatus": "PASS"
+}

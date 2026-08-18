@@ -1,0 +1,183 @@
+{
+  "experiment_name": "Step 12 Hyperparameter Optimization Experiment",
+  "dataset_matches": 1140,
+  "recommendation": "REJECT OPTIMIZATION (KEEP BASELINE UNCHANGED)",
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_size": 570,
+      "test_size": 114,
+      "test_window": "2023-12-30 -> 2024-04-06",
+      "inner_val_metrics": {
+        "catboost_loss": 1.0101,
+        "dixon_coles_loss": 1.0308,
+        "ensemble_loss": 0.9894
+      },
+      "selected_hyperparameters": {
+        "catboost": {
+          "depth": 5,
+          "learning_rate": 0.01,
+          "iterations": 150,
+          "l2_leaf_reg": 5,
+          "random_seed": 42,
+          "verbose": 0
+        },
+        "dixon_coles_xi": 0.0005,
+        "ensemble_weight_cb": 0.5
+      },
+      "outer_test_metrics": {
+        "baseline_log_loss": 0.943,
+        "optimized_log_loss": 0.946,
+        "optimized_brier": 0.558,
+        "optimized_ece": 0.017,
+        "optimized_accuracy_pct": 55.3
+      }
+    },
+    {
+      "fold": 2,
+      "train_size": 684,
+      "test_size": 114,
+      "test_window": "2024-04-06 -> 2024-09-14",
+      "inner_val_metrics": {
+        "catboost_loss": 0.999,
+        "dixon_coles_loss": 1.0103,
+        "ensemble_loss": 0.9888
+      },
+      "selected_hyperparameters": {
+        "catboost": {
+          "depth": 5,
+          "learning_rate": 0.01,
+          "iterations": 300,
+          "l2_leaf_reg": 3,
+          "random_seed": 42,
+          "verbose": 0
+        },
+        "dixon_coles_xi": 0.0,
+        "ensemble_weight_cb": 0.6
+      },
+      "outer_test_metrics": {
+        "baseline_log_loss": 0.902,
+        "optimized_log_loss": 0.906,
+        "optimized_brier": 0.528,
+        "optimized_ece": 0.032,
+        "optimized_accuracy_pct": 57.9
+      }
+    },
+    {
+      "fold": 3,
+      "train_size": 798,
+      "test_size": 114,
+      "test_window": "2024-09-15 -> 2024-12-14",
+      "inner_val_metrics": {
+        "catboost_loss": 0.9644,
+        "dixon_coles_loss": 0.9238,
+        "ensemble_loss": 0.9269
+      },
+      "selected_hyperparameters": {
+        "catboost": {
+          "depth": 3,
+          "learning_rate": 0.03,
+          "iterations": 200,
+          "l2_leaf_reg": 3,
+          "random_seed": 42,
+          "verbose": 0
+        },
+        "dixon_coles_xi": 0.0,
+        "ensemble_weight_cb": 0.25
+      },
+      "outer_test_metrics": {
+        "baseline_log_loss": 1.014,
+        "optimized_log_loss": 1.017,
+        "optimized_brier": 0.611,
+        "optimized_ece": 0.034,
+        "optimized_accuracy_pct": 50.0
+      }
+    },
+    {
+      "fold": 4,
+      "train_size": 912,
+      "test_size": 114,
+      "test_window": "2024-12-14 -> 2025-02-26",
+      "inner_val_metrics": {
+        "catboost_loss": 0.9724,
+        "dixon_coles_loss": 0.9734,
+        "ensemble_loss": 0.9656
+      },
+      "selected_hyperparameters": {
+        "catboost": {
+          "depth": 3,
+          "learning_rate": 0.03,
+          "iterations": 200,
+          "l2_leaf_reg": 3,
+          "random_seed": 42,
+          "verbose": 0
+        },
+        "dixon_coles_xi": 0.002,
+        "ensemble_weight_cb": 0.5
+      },
+      "outer_test_metrics": {
+        "baseline_log_loss": 1.007,
+        "optimized_log_loss": 1.004,
+        "optimized_brier": 0.602,
+        "optimized_ece": 0.039,
+        "optimized_accuracy_pct": 49.1
+      }
+    },
+    {
+      "fold": 5,
+      "train_size": 1026,
+      "test_size": 114,
+      "test_window": "2025-02-26 -> 2025-05-25",
+      "inner_val_metrics": {
+        "catboost_loss": 0.9781,
+        "dixon_coles_loss": 0.9928,
+        "ensemble_loss": 0.9754
+      },
+      "selected_hyperparameters": {
+        "catboost": {
+          "depth": 3,
+          "learning_rate": 0.03,
+          "iterations": 200,
+          "l2_leaf_reg": 3,
+          "random_seed": 42,
+          "verbose": 0
+        },
+        "dixon_coles_xi": 0.005,
+        "ensemble_weight_cb": 0.75
+      },
+      "outer_test_metrics": {
+        "baseline_log_loss": 0.962,
+        "optimized_log_loss": 0.965,
+        "optimized_brier": 0.575,
+        "optimized_ece": 0.03,
+        "optimized_accuracy_pct": 56.1
+      }
+    }
+  ],
+  "global_summary": {
+    "Baseline_Engine": {
+      "log_loss": 0.965,
+      "brier_score": 0.574,
+      "ece_calibration_error": 0.023,
+      "accuracy_pct": 53.9,
+      "mean_fold_log_loss": 0.966,
+      "std_fold_log_loss": 0.042
+    },
+    "Optimized_Engine": {
+      "log_loss": 0.967,
+      "brier_score": 0.575,
+      "ece_calibration_error": 0.012,
+      "accuracy_pct": 53.7,
+      "macro_f1": 0.4,
+      "mean_fold_log_loss": 0.968,
+      "std_fold_log_loss": 0.04
+    },
+    "bootstrap_test_vs_baseline": {
+      "mean_loss_diff_base_minus_cand": -0.002,
+      "ci_95_lower": -0.0074,
+      "ci_95_upper": 0.0037,
+      "probability_beats_baseline": 0.267
+    },
+    "recommendation": "REJECT OPTIMIZATION (KEEP BASELINE UNCHANGED)"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "contractVersion": "step29-v1",
+  "weights": {
+    "teamStrength": 0.31,
+    "recentForm": 0.22,
+    "opponentAdjusted": 0.16,
+    "homeAway": 0.12,
+    "commonOpponents": 0.11,
+    "leagueStrength": 0.08,
+    "playerStrength": 0.0
+  },
+  "sum": 1.0,
+  "is_valid": true
+}

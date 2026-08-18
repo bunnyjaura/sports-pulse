@@ -1,0 +1,16 @@
+{
+  "fixtureId": "le_havre_psg",
+  "homeTeam": "Le Havre",
+  "awayTeam": "Paris Saint-Germain",
+  "date": "2026-08-14",
+  "league": "Ligue 1",
+  "expectedPipelineChecks": {
+    "historicalState": "PASS",
+    "targetIsolation": "PASS",
+    "bothTeamEvidence": "PASS",
+    "weightContract": "PASS",
+    "featureConnectivity": "PASS",
+    "probabilityIntegrity": "PASS",
+    "fallbackPrediction": "NOT_USED"
+  }
+}

@@ -1,0 +1,713 @@
+{
+  "experiment_name": "Step 9 Probability Ensemble Experiment",
+  "dataset_matches": 1140,
+  "does_football_add_info_beyond_market": "NO",
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_size": 570,
+      "test_size": 114,
+      "test_window": "2023-12-30 -> 2024-04-06",
+      "weights_football": [
+        0.25,
+        0.25,
+        0.25,
+        0.25
+      ],
+      "weights_market_football": [
+        0.333,
+        0.333,
+        0.334
+      ],
+      "metrics": {
+        "Market": {
+          "log_loss": 0.885,
+          "brier_score": 0.517,
+          "ece": 0.027,
+          "accuracy_pct": 59.6
+        },
+        "CatBoost": {
+          "log_loss": 0.913,
+          "brier_score": 0.535,
+          "ece": 0.02,
+          "accuracy_pct": 60.5
+        },
+        "Dixon-Coles": {
+          "log_loss": 0.928,
+          "brier_score": 0.55,
+          "ece": 0.009,
+          "accuracy_pct": 57.9
+        },
+        "XGBoost": {
+          "log_loss": 0.927,
+          "brier_score": 0.545,
+          "ece": 0.026,
+          "accuracy_pct": 58.8
+        },
+        "LightGBM_Platt": {
+          "log_loss": 0.966,
+          "brier_score": 0.565,
+          "ece": 0.026,
+          "accuracy_pct": 56.1
+        },
+        "Equal_4_Model": {
+          "log_loss": 0.922,
+          "brier_score": 0.54,
+          "ece": 0.029,
+          "accuracy_pct": 58.8
+        },
+        "CatBoost_DC": {
+          "log_loss": 0.913,
+          "brier_score": 0.536,
+          "ece": 0.048,
+          "accuracy_pct": 57.9
+        },
+        "CatBoost_DC_XGB": {
+          "log_loss": 0.912,
+          "brier_score": 0.535,
+          "ece": 0.026,
+          "accuracy_pct": 58.8
+        },
+        "Market_CatBoost": {
+          "log_loss": 0.896,
+          "brier_score": 0.524,
+          "ece": 0.026,
+          "accuracy_pct": 58.8
+        },
+        "Market_DC": {
+          "log_loss": 0.901,
+          "brier_score": 0.529,
+          "ece": 0.032,
+          "accuracy_pct": 57.9
+        },
+        "Market_CatBoost_DC": {
+          "log_loss": 0.902,
+          "brier_score": 0.528,
+          "ece": 0.034,
+          "accuracy_pct": 58.8
+        },
+        "Optimized_Football": {
+          "log_loss": 0.922,
+          "brier_score": 0.54,
+          "ece": 0.029,
+          "accuracy_pct": 58.8
+        },
+        "Optimized_Market_Football": {
+          "log_loss": 0.902,
+          "brier_score": 0.528,
+          "ece": 0.034,
+          "accuracy_pct": 58.8
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "train_size": 684,
+      "test_size": 114,
+      "test_window": "2024-04-06 -> 2024-09-14",
+      "weights_football": [
+        0.441,
+        0.276,
+        0.233,
+        0.05
+      ],
+      "weights_market_football": [
+        0.889,
+        0.061,
+        0.05
+      ],
+      "metrics": {
+        "Market": {
+          "log_loss": 0.877,
+          "brier_score": 0.508,
+          "ece": 0.047,
+          "accuracy_pct": 63.2
+        },
+        "CatBoost": {
+          "log_loss": 0.906,
+          "brier_score": 0.526,
+          "ece": 0.02,
+          "accuracy_pct": 60.5
+        },
+        "Dixon-Coles": {
+          "log_loss": 0.898,
+          "brier_score": 0.522,
+          "ece": 0.046,
+          "accuracy_pct": 63.2
+        },
+        "XGBoost": {
+          "log_loss": 0.969,
+          "brier_score": 0.56,
+          "ece": 0.029,
+          "accuracy_pct": 57.9
+        },
+        "LightGBM_Platt": {
+          "log_loss": 0.977,
+          "brier_score": 0.57,
+          "ece": 0.037,
+          "accuracy_pct": 56.1
+        },
+        "Equal_4_Model": {
+          "log_loss": 0.924,
+          "brier_score": 0.536,
+          "ece": 0.018,
+          "accuracy_pct": 59.6
+        },
+        "CatBoost_DC": {
+          "log_loss": 0.894,
+          "brier_score": 0.518,
+          "ece": 0.025,
+          "accuracy_pct": 60.5
+        },
+        "CatBoost_DC_XGB": {
+          "log_loss": 0.911,
+          "brier_score": 0.528,
+          "ece": 0.016,
+          "accuracy_pct": 59.6
+        },
+        "Market_CatBoost": {
+          "log_loss": 0.889,
+          "brier_score": 0.516,
+          "ece": 0.032,
+          "accuracy_pct": 60.5
+        },
+        "Market_DC": {
+          "log_loss": 0.882,
+          "brier_score": 0.511,
+          "ece": 0.043,
+          "accuracy_pct": 62.3
+        },
+        "Market_CatBoost_DC": {
+          "log_loss": 0.886,
+          "brier_score": 0.514,
+          "ece": 0.038,
+          "accuracy_pct": 62.3
+        },
+        "Optimized_Football": {
+          "log_loss": 0.91,
+          "brier_score": 0.528,
+          "ece": 0.023,
+          "accuracy_pct": 59.6
+        },
+        "Optimized_Market_Football": {
+          "log_loss": 0.878,
+          "brier_score": 0.509,
+          "ece": 0.045,
+          "accuracy_pct": 63.2
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "train_size": 798,
+      "test_size": 114,
+      "test_window": "2024-09-15 -> 2024-12-14",
+      "weights_football": [
+        0.465,
+        0.435,
+        0.05,
+        0.05
+      ],
+      "weights_market_football": [
+        0.847,
+        0.05,
+        0.103
+      ],
+      "metrics": {
+        "Market": {
+          "log_loss": 0.988,
+          "brier_score": 0.59,
+          "ece": 0.014,
+          "accuracy_pct": 49.1
+        },
+        "CatBoost": {
+          "log_loss": 0.998,
+          "brier_score": 0.598,
+          "ece": 0.051,
+          "accuracy_pct": 45.6
+        },
+        "Dixon-Coles": {
+          "log_loss": 1.016,
+          "brier_score": 0.61,
+          "ece": 0.033,
+          "accuracy_pct": 49.1
+        },
+        "XGBoost": {
+          "log_loss": 0.993,
+          "brier_score": 0.602,
+          "ece": 0.066,
+          "accuracy_pct": 45.6
+        },
+        "LightGBM_Platt": {
+          "log_loss": 1.012,
+          "brier_score": 0.609,
+          "ece": 0.075,
+          "accuracy_pct": 48.2
+        },
+        "Equal_4_Model": {
+          "log_loss": 0.995,
+          "brier_score": 0.597,
+          "ece": 0.061,
+          "accuracy_pct": 49.1
+        },
+        "CatBoost_DC": {
+          "log_loss": 1.0,
+          "brier_score": 0.598,
+          "ece": 0.027,
+          "accuracy_pct": 48.2
+        },
+        "CatBoost_DC_XGB": {
+          "log_loss": 0.993,
+          "brier_score": 0.596,
+          "ece": 0.055,
+          "accuracy_pct": 48.2
+        },
+        "Market_CatBoost": {
+          "log_loss": 0.991,
+          "brier_score": 0.593,
+          "ece": 0.042,
+          "accuracy_pct": 48.2
+        },
+        "Market_DC": {
+          "log_loss": 0.997,
+          "brier_score": 0.597,
+          "ece": 0.023,
+          "accuracy_pct": 50.9
+        },
+        "Market_CatBoost_DC": {
+          "log_loss": 0.994,
+          "brier_score": 0.595,
+          "ece": 0.015,
+          "accuracy_pct": 47.4
+        },
+        "Optimized_Football": {
+          "log_loss": 0.998,
+          "brier_score": 0.598,
+          "ece": 0.021,
+          "accuracy_pct": 48.2
+        },
+        "Optimized_Market_Football": {
+          "log_loss": 0.989,
+          "brier_score": 0.591,
+          "ece": 0.016,
+          "accuracy_pct": 49.1
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "train_size": 912,
+      "test_size": 114,
+      "test_window": "2024-12-14 -> 2025-02-26",
+      "weights_football": [
+        0.497,
+        0.384,
+        0.068,
+        0.05
+      ],
+      "weights_market_football": [
+        0.81,
+        0.091,
+        0.099
+      ],
+      "metrics": {
+        "Market": {
+          "log_loss": 0.998,
+          "brier_score": 0.599,
+          "ece": 0.037,
+          "accuracy_pct": 50.9
+        },
+        "CatBoost": {
+          "log_loss": 1.028,
+          "brier_score": 0.618,
+          "ece": 0.058,
+          "accuracy_pct": 50.9
+        },
+        "Dixon-Coles": {
+          "log_loss": 1.01,
+          "brier_score": 0.606,
+          "ece": 0.049,
+          "accuracy_pct": 48.2
+        },
+        "XGBoost": {
+          "log_loss": 1.038,
+          "brier_score": 0.621,
+          "ece": 0.049,
+          "accuracy_pct": 50.0
+        },
+        "LightGBM_Platt": {
+          "log_loss": 1.041,
+          "brier_score": 0.626,
+          "ece": 0.026,
+          "accuracy_pct": 48.2
+        },
+        "Equal_4_Model": {
+          "log_loss": 1.019,
+          "brier_score": 0.611,
+          "ece": 0.042,
+          "accuracy_pct": 50.0
+        },
+        "CatBoost_DC": {
+          "log_loss": 1.013,
+          "brier_score": 0.608,
+          "ece": 0.046,
+          "accuracy_pct": 50.0
+        },
+        "CatBoost_DC_XGB": {
+          "log_loss": 1.016,
+          "brier_score": 0.61,
+          "ece": 0.056,
+          "accuracy_pct": 50.0
+        },
+        "Market_CatBoost": {
+          "log_loss": 1.011,
+          "brier_score": 0.608,
+          "ece": 0.051,
+          "accuracy_pct": 51.8
+        },
+        "Market_DC": {
+          "log_loss": 1.001,
+          "brier_score": 0.6,
+          "ece": 0.045,
+          "accuracy_pct": 50.0
+        },
+        "Market_CatBoost_DC": {
+          "log_loss": 1.007,
+          "brier_score": 0.605,
+          "ece": 0.05,
+          "accuracy_pct": 50.9
+        },
+        "Optimized_Football": {
+          "log_loss": 1.015,
+          "brier_score": 0.609,
+          "ece": 0.047,
+          "accuracy_pct": 50.9
+        },
+        "Optimized_Market_Football": {
+          "log_loss": 1.0,
+          "brier_score": 0.6,
+          "ece": 0.028,
+          "accuracy_pct": 52.6
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "train_size": 1026,
+      "test_size": 114,
+      "test_window": "2025-02-26 -> 2025-05-25",
+      "weights_football": [
+        0.399,
+        0.442,
+        0.11,
+        0.05
+      ],
+      "weights_market_football": [
+        0.793,
+        0.05,
+        0.157
+      ],
+      "metrics": {
+        "Market": {
+          "log_loss": 0.948,
+          "brier_score": 0.563,
+          "ece": 0.024,
+          "accuracy_pct": 59.6
+        },
+        "CatBoost": {
+          "log_loss": 0.946,
+          "brier_score": 0.561,
+          "ece": 0.017,
+          "accuracy_pct": 55.3
+        },
+        "Dixon-Coles": {
+          "log_loss": 0.967,
+          "brier_score": 0.579,
+          "ece": 0.016,
+          "accuracy_pct": 56.1
+        },
+        "XGBoost": {
+          "log_loss": 0.972,
+          "brier_score": 0.574,
+          "ece": 0.036,
+          "accuracy_pct": 55.3
+        },
+        "LightGBM_Platt": {
+          "log_loss": 0.963,
+          "brier_score": 0.573,
+          "ece": 0.037,
+          "accuracy_pct": 57.9
+        },
+        "Equal_4_Model": {
+          "log_loss": 0.948,
+          "brier_score": 0.563,
+          "ece": 0.029,
+          "accuracy_pct": 55.3
+        },
+        "CatBoost_DC": {
+          "log_loss": 0.948,
+          "brier_score": 0.565,
+          "ece": 0.014,
+          "accuracy_pct": 57.0
+        },
+        "CatBoost_DC_XGB": {
+          "log_loss": 0.949,
+          "brier_score": 0.564,
+          "ece": 0.026,
+          "accuracy_pct": 56.1
+        },
+        "Market_CatBoost": {
+          "log_loss": 0.946,
+          "brier_score": 0.561,
+          "ece": 0.025,
+          "accuracy_pct": 57.9
+        },
+        "Market_DC": {
+          "log_loss": 0.951,
+          "brier_score": 0.567,
+          "ece": 0.014,
+          "accuracy_pct": 56.1
+        },
+        "Market_CatBoost_DC": {
+          "log_loss": 0.947,
+          "brier_score": 0.563,
+          "ece": 0.026,
+          "accuracy_pct": 57.0
+        },
+        "Optimized_Football": {
+          "log_loss": 0.948,
+          "brier_score": 0.564,
+          "ece": 0.027,
+          "accuracy_pct": 56.1
+        },
+        "Optimized_Market_Football": {
+          "log_loss": 0.948,
+          "brier_score": 0.563,
+          "ece": 0.025,
+          "accuracy_pct": 58.8
+        }
+      }
+    }
+  ],
+  "global_summary": {
+    "Market": {
+      "log_loss": 0.939,
+      "brier_score": 0.556,
+      "ece_calibration_error": 0.011,
+      "accuracy_pct": 56.5,
+      "macro_f1": 0.423,
+      "mean_fold_log_loss": 0.939,
+      "std_fold_log_loss": 0.05,
+      "mean_fold_brier": 0.555,
+      "std_fold_brier": 0.037,
+      "mean_fold_ece": 0.03,
+      "std_fold_ece": 0.011
+    },
+    "CatBoost": {
+      "log_loss": 0.958,
+      "brier_score": 0.568,
+      "ece_calibration_error": 0.014,
+      "accuracy_pct": 54.6,
+      "macro_f1": 0.418,
+      "mean_fold_log_loss": 0.958,
+      "std_fold_log_loss": 0.048,
+      "mean_fold_brier": 0.568,
+      "std_fold_brier": 0.035,
+      "mean_fold_ece": 0.033,
+      "std_fold_ece": 0.018
+    },
+    "Dixon-Coles": {
+      "log_loss": 0.964,
+      "brier_score": 0.574,
+      "ece_calibration_error": 0.012,
+      "accuracy_pct": 54.9,
+      "macro_f1": 0.413,
+      "mean_fold_log_loss": 0.964,
+      "std_fold_log_loss": 0.046,
+      "mean_fold_brier": 0.573,
+      "std_fold_brier": 0.034,
+      "mean_fold_ece": 0.031,
+      "std_fold_ece": 0.016
+    },
+    "XGBoost": {
+      "log_loss": 0.98,
+      "brier_score": 0.58,
+      "ece_calibration_error": 0.024,
+      "accuracy_pct": 53.5,
+      "macro_f1": 0.429,
+      "mean_fold_log_loss": 0.98,
+      "std_fold_log_loss": 0.036,
+      "mean_fold_brier": 0.58,
+      "std_fold_brier": 0.028,
+      "mean_fold_ece": 0.041,
+      "std_fold_ece": 0.015
+    },
+    "LightGBM_Platt": {
+      "log_loss": 0.992,
+      "brier_score": 0.589,
+      "ece_calibration_error": 0.006,
+      "accuracy_pct": 53.3,
+      "macro_f1": 0.397,
+      "mean_fold_log_loss": 0.992,
+      "std_fold_log_loss": 0.03,
+      "mean_fold_brier": 0.589,
+      "std_fold_brier": 0.024,
+      "mean_fold_ece": 0.04,
+      "std_fold_ece": 0.018
+    },
+    "Equal_4_Model": {
+      "log_loss": 0.961,
+      "brier_score": 0.57,
+      "ece_calibration_error": 0.011,
+      "accuracy_pct": 54.6,
+      "macro_f1": 0.414,
+      "mean_fold_log_loss": 0.962,
+      "std_fold_log_loss": 0.039,
+      "mean_fold_brier": 0.569,
+      "std_fold_brier": 0.03,
+      "mean_fold_ece": 0.036,
+      "std_fold_ece": 0.015
+    },
+    "CatBoost_DC": {
+      "log_loss": 0.954,
+      "brier_score": 0.565,
+      "ece_calibration_error": 0.013,
+      "accuracy_pct": 54.7,
+      "macro_f1": 0.408,
+      "mean_fold_log_loss": 0.954,
+      "std_fold_log_loss": 0.047,
+      "mean_fold_brier": 0.565,
+      "std_fold_brier": 0.035,
+      "mean_fold_ece": 0.032,
+      "std_fold_ece": 0.013
+    },
+    "CatBoost_DC_XGB": {
+      "log_loss": 0.956,
+      "brier_score": 0.567,
+      "ece_calibration_error": 0.014,
+      "accuracy_pct": 54.6,
+      "macro_f1": 0.414,
+      "mean_fold_log_loss": 0.956,
+      "std_fold_log_loss": 0.042,
+      "mean_fold_brier": 0.567,
+      "std_fold_brier": 0.032,
+      "mean_fold_ece": 0.036,
+      "std_fold_ece": 0.016
+    },
+    "Market_CatBoost": {
+      "log_loss": 0.946,
+      "brier_score": 0.56,
+      "ece_calibration_error": 0.014,
+      "accuracy_pct": 55.4,
+      "macro_f1": 0.413,
+      "mean_fold_log_loss": 0.947,
+      "std_fold_log_loss": 0.049,
+      "mean_fold_brier": 0.56,
+      "std_fold_brier": 0.036,
+      "mean_fold_ece": 0.035,
+      "std_fold_ece": 0.01
+    },
+    "Market_DC": {
+      "log_loss": 0.946,
+      "brier_score": 0.561,
+      "ece_calibration_error": 0.009,
+      "accuracy_pct": 55.4,
+      "macro_f1": 0.415,
+      "mean_fold_log_loss": 0.946,
+      "std_fold_log_loss": 0.049,
+      "mean_fold_brier": 0.561,
+      "std_fold_brier": 0.036,
+      "mean_fold_ece": 0.031,
+      "std_fold_ece": 0.012
+    },
+    "Market_CatBoost_DC": {
+      "log_loss": 0.947,
+      "brier_score": 0.561,
+      "ece_calibration_error": 0.012,
+      "accuracy_pct": 55.3,
+      "macro_f1": 0.413,
+      "mean_fold_log_loss": 0.947,
+      "std_fold_log_loss": 0.048,
+      "mean_fold_brier": 0.561,
+      "std_fold_brier": 0.036,
+      "mean_fold_ece": 0.033,
+      "std_fold_ece": 0.012
+    },
+    "Optimized_Football": {
+      "log_loss": 0.958,
+      "brier_score": 0.568,
+      "ece_calibration_error": 0.004,
+      "accuracy_pct": 54.7,
+      "macro_f1": 0.416,
+      "mean_fold_log_loss": 0.959,
+      "std_fold_log_loss": 0.041,
+      "mean_fold_brier": 0.568,
+      "std_fold_brier": 0.032,
+      "mean_fold_ece": 0.029,
+      "std_fold_ece": 0.009
+    },
+    "Optimized_Market_Football": {
+      "log_loss": 0.943,
+      "brier_score": 0.558,
+      "ece_calibration_error": 0.011,
+      "accuracy_pct": 56.5,
+      "macro_f1": 0.424,
+      "mean_fold_log_loss": 0.943,
+      "std_fold_log_loss": 0.048,
+      "mean_fold_brier": 0.558,
+      "std_fold_brier": 0.035,
+      "mean_fold_ece": 0.03,
+      "std_fold_ece": 0.01
+    }
+  },
+  "error_correlations": {
+    "Market": {
+      "Market": 1.0,
+      "CatBoost": 0.976,
+      "Dixon-Coles": 0.897,
+      "XGBoost": 0.923,
+      "LightGBM_Platt": 0.885,
+      "Optimized_Market_Football": 0.994
+    },
+    "CatBoost": {
+      "Market": 0.976,
+      "CatBoost": 1.0,
+      "Dixon-Coles": 0.882,
+      "XGBoost": 0.96,
+      "LightGBM_Platt": 0.925,
+      "Optimized_Market_Football": 0.981
+    },
+    "Dixon-Coles": {
+      "Market": 0.897,
+      "CatBoost": 0.882,
+      "Dixon-Coles": 1.0,
+      "XGBoost": 0.837,
+      "LightGBM_Platt": 0.807,
+      "Optimized_Market_Football": 0.926
+    },
+    "XGBoost": {
+      "Market": 0.923,
+      "CatBoost": 0.96,
+      "Dixon-Coles": 0.837,
+      "XGBoost": 1.0,
+      "LightGBM_Platt": 0.951,
+      "Optimized_Market_Football": 0.931
+    },
+    "LightGBM_Platt": {
+      "Market": 0.885,
+      "CatBoost": 0.925,
+      "Dixon-Coles": 0.807,
+      "XGBoost": 0.951,
+      "LightGBM_Platt": 1.0,
+      "Optimized_Market_Football": 0.893
+    },
+    "Optimized_Market_Football": {
+      "Market": 0.994,
+      "CatBoost": 0.981,
+      "Dixon-Coles": 0.926,
+      "XGBoost": 0.931,
+      "LightGBM_Platt": 0.893,
+      "Optimized_Market_Football": 1.0
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "final_decision": "COLDSTART_VALIDATED",
+  "model_version_frozen": "football-ensemble-v1",
+  "model_version_coldstart": "football-coldstart-v2",
+  "integrity_checklist": {
+    "evidence_integrity": "PASS",
+    "temporal_integrity": "PASS",
+    "weight_integrity": "PASS",
+    "probability_integrity": "PASS",
+    "production_parity": "PASS"
+  },
+  "all_tests_passed": true
+}

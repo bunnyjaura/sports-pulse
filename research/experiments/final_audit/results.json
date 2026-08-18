@@ -1,0 +1,140 @@
+{
+  "experiment_name": "Step 13 Final Probability Engine + Production Readiness Audit",
+  "dataset_matches": 1140,
+  "final_status": "PASS",
+  "production_readiness": "READY",
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_size": 570,
+      "test_size": 114,
+      "test_window": "2023-12-30 -> 2024-04-06",
+      "market_log_loss": 0.885,
+      "catboost_log_loss": 0.971,
+      "dixon_coles_log_loss": 0.928,
+      "ensemble_log_loss": 0.943,
+      "ensemble_brier": 0.556,
+      "ensemble_ece": 0.056,
+      "ensemble_accuracy_pct": 54.4
+    },
+    {
+      "fold": 2,
+      "train_size": 684,
+      "test_size": 114,
+      "test_window": "2024-04-06 -> 2024-09-14",
+      "market_log_loss": 0.877,
+      "catboost_log_loss": 0.921,
+      "dixon_coles_log_loss": 0.898,
+      "ensemble_log_loss": 0.902,
+      "ensemble_brier": 0.525,
+      "ensemble_ece": 0.033,
+      "ensemble_accuracy_pct": 60.5
+    },
+    {
+      "fold": 3,
+      "train_size": 798,
+      "test_size": 114,
+      "test_window": "2024-09-15 -> 2024-12-14",
+      "market_log_loss": 0.988,
+      "catboost_log_loss": 1.023,
+      "dixon_coles_log_loss": 1.016,
+      "ensemble_log_loss": 1.014,
+      "ensemble_brier": 0.609,
+      "ensemble_ece": 0.032,
+      "ensemble_accuracy_pct": 50.0
+    },
+    {
+      "fold": 4,
+      "train_size": 912,
+      "test_size": 114,
+      "test_window": "2024-12-14 -> 2025-02-26",
+      "market_log_loss": 0.998,
+      "catboost_log_loss": 1.02,
+      "dixon_coles_log_loss": 1.01,
+      "ensemble_log_loss": 1.007,
+      "ensemble_brier": 0.603,
+      "ensemble_ece": 0.031,
+      "ensemble_accuracy_pct": 49.1
+    },
+    {
+      "fold": 5,
+      "train_size": 1026,
+      "test_size": 114,
+      "test_window": "2025-02-26 -> 2025-05-25",
+      "market_log_loss": 0.948,
+      "catboost_log_loss": 0.973,
+      "dixon_coles_log_loss": 0.967,
+      "ensemble_log_loss": 0.962,
+      "ensemble_brier": 0.574,
+      "ensemble_ece": 0.023,
+      "ensemble_accuracy_pct": 55.3
+    }
+  ],
+  "global_summary": {
+    "Historical_Class_Frequency": {
+      "log_loss": 1.077,
+      "brier_score": 0.653,
+      "accuracy_pct": 42.3
+    },
+    "Always_Home_Baseline": {
+      "log_loss": 2.667,
+      "brier_score": 1.12,
+      "accuracy_pct": 42.3
+    },
+    "CatBoost_Alone": {
+      "log_loss": 0.982,
+      "brier_score": 0.584,
+      "ece_calibration_error": 0.026,
+      "accuracy_pct": 54.0
+    },
+    "Dixon_Coles_Alone": {
+      "log_loss": 0.964,
+      "brier_score": 0.574,
+      "ece_calibration_error": 0.012,
+      "accuracy_pct": 54.9
+    },
+    "Approved_Football_Ensemble_5050": {
+      "model_version": "football-ensemble-v1",
+      "log_loss": 0.965,
+      "brier_score": 0.574,
+      "ece_calibration_error": 0.023,
+      "accuracy_pct": 53.9,
+      "macro_f1": 0.401
+    },
+    "Market_Benchmark": {
+      "log_loss": 0.939,
+      "brier_score": 0.556,
+      "ece_calibration_error": 0.011,
+      "accuracy_pct": 56.5
+    },
+    "pipeline_audit": {
+      "total_matches": 1140,
+      "chronologically_sorted": true,
+      "missing_results_count": 0,
+      "unique_teams": 24
+    },
+    "rolling_monitoring": {
+      "rolling_50_matches": {
+        "window_size": 50,
+        "log_loss": 0.98,
+        "accuracy_pct": 56.0
+      },
+      "rolling_100_matches": {
+        "window_size": 100,
+        "log_loss": 0.967,
+        "accuracy_pct": 56.0
+      },
+      "rolling_250_matches": {
+        "window_size": 250,
+        "log_loss": 0.984,
+        "accuracy_pct": 52.0
+      }
+    },
+    "audit_checks": {
+      "leakage_test": "PASS",
+      "probability_test": "PASS",
+      "reproducibility_test": "PASS"
+    },
+    "production_readiness": "READY"
+  }
+}

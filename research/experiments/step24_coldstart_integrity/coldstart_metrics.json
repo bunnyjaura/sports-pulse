@@ -1,0 +1,30 @@
+{
+  "LEVEL_0 (Minimal Evidence)": {
+    "count": 180,
+    "log_loss": 1.0941,
+    "brier": 0.6645,
+    "ece": 0.045,
+    "accuracy": 0.405
+  },
+  "LEVEL_1 (Limited History)": {
+    "count": 350,
+    "log_loss": 1.0854,
+    "brier": 0.6582,
+    "ece": 0.041,
+    "accuracy": 0.422
+  },
+  "LEVEL_2 (Strong Form/Team)": {
+    "count": 820,
+    "log_loss": 1.0682,
+    "brier": 0.6488,
+    "ece": 0.038,
+    "accuracy": 0.431
+  },
+  "LEVEL_3 (Multi-Category Strong)": {
+    "count": 1200,
+    "log_loss": 1.0612,
+    "brier": 0.6421,
+    "ece": 0.035,
+    "accuracy": 0.448
+  }
+}

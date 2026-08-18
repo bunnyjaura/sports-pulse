@@ -1,0 +1,1658 @@
+{
+  "experiment_name": "Step 8 Probability Calibration Experiment",
+  "dataset_matches": 1140,
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_size": 570,
+      "test_size": 114,
+      "test_window": "2023-12-30 -> 2024-04-06",
+      "evaluations": {
+        "CatBoost": {
+          "Raw": {
+            "log_loss": 0.913,
+            "brier_score": 0.535,
+            "ece_calibration_error": 0.02,
+            "accuracy_pct": 60.5,
+            "macro_f1": 0.493
+          },
+          "Platt": {
+            "log_loss": 0.964,
+            "brier_score": 0.562,
+            "ece_calibration_error": 0.038,
+            "accuracy_pct": 58.8,
+            "macro_f1": 0.447
+          },
+          "Isotonic": {
+            "log_loss": 0.93,
+            "brier_score": 0.538,
+            "ece_calibration_error": 0.085,
+            "accuracy_pct": 60.5,
+            "macro_f1": 0.51
+          }
+        },
+        "Dixon-Coles": {
+          "Raw": {
+            "log_loss": 0.928,
+            "brier_score": 0.55,
+            "ece_calibration_error": 0.009,
+            "accuracy_pct": 57.9,
+            "macro_f1": 0.444
+          },
+          "Platt": {
+            "log_loss": 0.984,
+            "brier_score": 0.578,
+            "ece_calibration_error": 0.026,
+            "accuracy_pct": 55.3,
+            "macro_f1": 0.411
+          },
+          "Isotonic": {
+            "log_loss": 0.977,
+            "brier_score": 0.576,
+            "ece_calibration_error": 0.029,
+            "accuracy_pct": 54.4,
+            "macro_f1": 0.39
+          }
+        },
+        "XGBoost": {
+          "Raw": {
+            "log_loss": 0.927,
+            "brier_score": 0.545,
+            "ece_calibration_error": 0.026,
+            "accuracy_pct": 58.8,
+            "macro_f1": 0.492
+          },
+          "Platt": {
+            "log_loss": 0.97,
+            "brier_score": 0.568,
+            "ece_calibration_error": 0.038,
+            "accuracy_pct": 56.1,
+            "macro_f1": 0.428
+          },
+          "Isotonic": {
+            "log_loss": 0.931,
+            "brier_score": 0.547,
+            "ece_calibration_error": 0.055,
+            "accuracy_pct": 58.8,
+            "macro_f1": 0.483
+          }
+        },
+        "LightGBM": {
+          "Raw": {
+            "log_loss": 0.926,
+            "brier_score": 0.54,
+            "ece_calibration_error": 0.03,
+            "accuracy_pct": 60.5,
+            "macro_f1": 0.531
+          },
+          "Platt": {
+            "log_loss": 0.966,
+            "brier_score": 0.565,
+            "ece_calibration_error": 0.026,
+            "accuracy_pct": 56.1,
+            "macro_f1": 0.43
+          },
+          "Isotonic": {
+            "log_loss": 0.944,
+            "brier_score": 0.555,
+            "ece_calibration_error": 0.045,
+            "accuracy_pct": 55.3,
+            "macro_f1": 0.432
+          }
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "train_size": 684,
+      "test_size": 114,
+      "test_window": "2024-04-06 -> 2024-09-14",
+      "evaluations": {
+        "CatBoost": {
+          "Raw": {
+            "log_loss": 0.906,
+            "brier_score": 0.526,
+            "ece_calibration_error": 0.02,
+            "accuracy_pct": 60.5,
+            "macro_f1": 0.448
+          },
+          "Platt": {
+            "log_loss": 0.926,
+            "brier_score": 0.542,
+            "ece_calibration_error": 0.032,
+            "accuracy_pct": 60.5,
+            "macro_f1": 0.445
+          },
+          "Isotonic": {
+            "log_loss": 0.99,
+            "brier_score": 0.558,
+            "ece_calibration_error": 0.024,
+            "accuracy_pct": 55.3,
+            "macro_f1": 0.426
+          }
+        },
+        "Dixon-Coles": {
+          "Raw": {
+            "log_loss": 0.898,
+            "brier_score": 0.522,
+            "ece_calibration_error": 0.046,
+            "accuracy_pct": 63.2,
+            "macro_f1": 0.471
+          },
+          "Platt": {
+            "log_loss": 0.962,
+            "brier_score": 0.569,
+            "ece_calibration_error": 0.022,
+            "accuracy_pct": 52.6,
+            "macro_f1": 0.374
+          },
+          "Isotonic": {
+            "log_loss": 0.968,
+            "brier_score": 0.574,
+            "ece_calibration_error": 0.037,
+            "accuracy_pct": 50.0,
+            "macro_f1": 0.336
+          }
+        },
+        "XGBoost": {
+          "Raw": {
+            "log_loss": 0.969,
+            "brier_score": 0.56,
+            "ece_calibration_error": 0.029,
+            "accuracy_pct": 57.9,
+            "macro_f1": 0.465
+          },
+          "Platt": {
+            "log_loss": 0.962,
+            "brier_score": 0.562,
+            "ece_calibration_error": 0.036,
+            "accuracy_pct": 57.0,
+            "macro_f1": 0.416
+          },
+          "Isotonic": {
+            "log_loss": 1.034,
+            "brier_score": 0.577,
+            "ece_calibration_error": 0.041,
+            "accuracy_pct": 53.5,
+            "macro_f1": 0.383
+          }
+        },
+        "LightGBM": {
+          "Raw": {
+            "log_loss": 1.009,
+            "brier_score": 0.579,
+            "ece_calibration_error": 0.035,
+            "accuracy_pct": 54.4,
+            "macro_f1": 0.458
+          },
+          "Platt": {
+            "log_loss": 0.977,
+            "brier_score": 0.57,
+            "ece_calibration_error": 0.037,
+            "accuracy_pct": 56.1,
+            "macro_f1": 0.407
+          },
+          "Isotonic": {
+            "log_loss": 1.036,
+            "brier_score": 0.586,
+            "ece_calibration_error": 0.033,
+            "accuracy_pct": 54.4,
+            "macro_f1": 0.472
+          }
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "train_size": 798,
+      "test_size": 114,
+      "test_window": "2024-09-15 -> 2024-12-14",
+      "evaluations": {
+        "CatBoost": {
+          "Raw": {
+            "log_loss": 0.998,
+            "brier_score": 0.598,
+            "ece_calibration_error": 0.051,
+            "accuracy_pct": 45.6,
+            "macro_f1": 0.342
+          },
+          "Platt": {
+            "log_loss": 1.012,
+            "brier_score": 0.607,
+            "ece_calibration_error": 0.04,
+            "accuracy_pct": 49.1,
+            "macro_f1": 0.366
+          },
+          "Isotonic": {
+            "log_loss": 1.047,
+            "brier_score": 0.614,
+            "ece_calibration_error": 0.065,
+            "accuracy_pct": 49.1,
+            "macro_f1": 0.425
+          }
+        },
+        "Dixon-Coles": {
+          "Raw": {
+            "log_loss": 1.016,
+            "brier_score": 0.61,
+            "ece_calibration_error": 0.033,
+            "accuracy_pct": 49.1,
+            "macro_f1": 0.368
+          },
+          "Platt": {
+            "log_loss": 1.028,
+            "brier_score": 0.617,
+            "ece_calibration_error": 0.031,
+            "accuracy_pct": 49.1,
+            "macro_f1": 0.369
+          },
+          "Isotonic": {
+            "log_loss": 1.057,
+            "brier_score": 0.618,
+            "ece_calibration_error": 0.057,
+            "accuracy_pct": 49.1,
+            "macro_f1": 0.412
+          }
+        },
+        "XGBoost": {
+          "Raw": {
+            "log_loss": 0.993,
+            "brier_score": 0.602,
+            "ece_calibration_error": 0.066,
+            "accuracy_pct": 45.6,
+            "macro_f1": 0.344
+          },
+          "Platt": {
+            "log_loss": 1.003,
+            "brier_score": 0.604,
+            "ece_calibration_error": 0.069,
+            "accuracy_pct": 49.1,
+            "macro_f1": 0.366
+          },
+          "Isotonic": {
+            "log_loss": 1.033,
+            "brier_score": 0.627,
+            "ece_calibration_error": 0.079,
+            "accuracy_pct": 48.2,
+            "macro_f1": 0.388
+          }
+        },
+        "LightGBM": {
+          "Raw": {
+            "log_loss": 1.006,
+            "brier_score": 0.608,
+            "ece_calibration_error": 0.075,
+            "accuracy_pct": 47.4,
+            "macro_f1": 0.401
+          },
+          "Platt": {
+            "log_loss": 1.012,
+            "brier_score": 0.609,
+            "ece_calibration_error": 0.075,
+            "accuracy_pct": 48.2,
+            "macro_f1": 0.363
+          },
+          "Isotonic": {
+            "log_loss": 1.036,
+            "brier_score": 0.631,
+            "ece_calibration_error": 0.1,
+            "accuracy_pct": 41.2,
+            "macro_f1": 0.326
+          }
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "train_size": 912,
+      "test_size": 114,
+      "test_window": "2024-12-14 -> 2025-02-26",
+      "evaluations": {
+        "CatBoost": {
+          "Raw": {
+            "log_loss": 1.028,
+            "brier_score": 0.618,
+            "ece_calibration_error": 0.058,
+            "accuracy_pct": 50.9,
+            "macro_f1": 0.38
+          },
+          "Platt": {
+            "log_loss": 1.039,
+            "brier_score": 0.624,
+            "ece_calibration_error": 0.039,
+            "accuracy_pct": 53.5,
+            "macro_f1": 0.396
+          },
+          "Isotonic": {
+            "log_loss": 1.115,
+            "brier_score": 0.652,
+            "ece_calibration_error": 0.122,
+            "accuracy_pct": 42.1,
+            "macro_f1": 0.38
+          }
+        },
+        "Dixon-Coles": {
+          "Raw": {
+            "log_loss": 1.01,
+            "brier_score": 0.606,
+            "ece_calibration_error": 0.049,
+            "accuracy_pct": 48.2,
+            "macro_f1": 0.358
+          },
+          "Platt": {
+            "log_loss": 1.035,
+            "brier_score": 0.62,
+            "ece_calibration_error": 0.035,
+            "accuracy_pct": 47.4,
+            "macro_f1": 0.35
+          },
+          "Isotonic": {
+            "log_loss": 1.062,
+            "brier_score": 0.633,
+            "ece_calibration_error": 0.053,
+            "accuracy_pct": 47.4,
+            "macro_f1": 0.35
+          }
+        },
+        "XGBoost": {
+          "Raw": {
+            "log_loss": 1.038,
+            "brier_score": 0.621,
+            "ece_calibration_error": 0.049,
+            "accuracy_pct": 50.0,
+            "macro_f1": 0.396
+          },
+          "Platt": {
+            "log_loss": 1.032,
+            "brier_score": 0.62,
+            "ece_calibration_error": 0.03,
+            "accuracy_pct": 50.9,
+            "macro_f1": 0.377
+          },
+          "Isotonic": {
+            "log_loss": 1.051,
+            "brier_score": 0.618,
+            "ece_calibration_error": 0.057,
+            "accuracy_pct": 45.6,
+            "macro_f1": 0.388
+          }
+        },
+        "LightGBM": {
+          "Raw": {
+            "log_loss": 1.074,
+            "brier_score": 0.638,
+            "ece_calibration_error": 0.076,
+            "accuracy_pct": 46.5,
+            "macro_f1": 0.37
+          },
+          "Platt": {
+            "log_loss": 1.041,
+            "brier_score": 0.626,
+            "ece_calibration_error": 0.026,
+            "accuracy_pct": 48.2,
+            "macro_f1": 0.354
+          },
+          "Isotonic": {
+            "log_loss": 1.071,
+            "brier_score": 0.625,
+            "ece_calibration_error": 0.042,
+            "accuracy_pct": 47.4,
+            "macro_f1": 0.363
+          }
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "train_size": 1026,
+      "test_size": 114,
+      "test_window": "2025-02-26 -> 2025-05-25",
+      "evaluations": {
+        "CatBoost": {
+          "Raw": {
+            "log_loss": 0.946,
+            "brier_score": 0.561,
+            "ece_calibration_error": 0.017,
+            "accuracy_pct": 55.3,
+            "macro_f1": 0.406
+          },
+          "Platt": {
+            "log_loss": 0.951,
+            "brier_score": 0.565,
+            "ece_calibration_error": 0.022,
+            "accuracy_pct": 55.3,
+            "macro_f1": 0.414
+          },
+          "Isotonic": {
+            "log_loss": 0.98,
+            "brier_score": 0.576,
+            "ece_calibration_error": 0.054,
+            "accuracy_pct": 52.6,
+            "macro_f1": 0.397
+          }
+        },
+        "Dixon-Coles": {
+          "Raw": {
+            "log_loss": 0.967,
+            "brier_score": 0.579,
+            "ece_calibration_error": 0.016,
+            "accuracy_pct": 56.1,
+            "macro_f1": 0.416
+          },
+          "Platt": {
+            "log_loss": 0.985,
+            "brier_score": 0.588,
+            "ece_calibration_error": 0.018,
+            "accuracy_pct": 52.6,
+            "macro_f1": 0.395
+          },
+          "Isotonic": {
+            "log_loss": 0.996,
+            "brier_score": 0.587,
+            "ece_calibration_error": 0.034,
+            "accuracy_pct": 52.6,
+            "macro_f1": 0.435
+          }
+        },
+        "XGBoost": {
+          "Raw": {
+            "log_loss": 0.972,
+            "brier_score": 0.574,
+            "ece_calibration_error": 0.036,
+            "accuracy_pct": 55.3,
+            "macro_f1": 0.441
+          },
+          "Platt": {
+            "log_loss": 0.97,
+            "brier_score": 0.577,
+            "ece_calibration_error": 0.032,
+            "accuracy_pct": 56.1,
+            "macro_f1": 0.424
+          },
+          "Isotonic": {
+            "log_loss": 1.001,
+            "brier_score": 0.581,
+            "ece_calibration_error": 0.055,
+            "accuracy_pct": 56.1,
+            "macro_f1": 0.426
+          }
+        },
+        "LightGBM": {
+          "Raw": {
+            "log_loss": 0.991,
+            "brier_score": 0.579,
+            "ece_calibration_error": 0.05,
+            "accuracy_pct": 57.0,
+            "macro_f1": 0.477
+          },
+          "Platt": {
+            "log_loss": 0.963,
+            "brier_score": 0.573,
+            "ece_calibration_error": 0.037,
+            "accuracy_pct": 57.9,
+            "macro_f1": 0.437
+          },
+          "Isotonic": {
+            "log_loss": 1.026,
+            "brier_score": 0.597,
+            "ece_calibration_error": 0.07,
+            "accuracy_pct": 54.4,
+            "macro_f1": 0.414
+          }
+        }
+      }
+    }
+  ],
+  "global_summary": {
+    "Market_Benchmark": {
+      "log_loss": 0.939,
+      "brier_score": 0.556,
+      "ece_calibration_error": 0.011,
+      "accuracy_pct": 56.5
+    },
+    "models": {
+      "CatBoost": {
+        "Raw": {
+          "log_loss": 0.958,
+          "brier_score": 0.568,
+          "ece_calibration_error": 0.014,
+          "accuracy_pct": 54.6,
+          "macro_f1": 0.418,
+          "mean_fold_log_loss": 0.958,
+          "std_fold_log_loss": 0.048,
+          "mean_fold_brier": 0.568,
+          "std_fold_brier": 0.035,
+          "mean_fold_ece": 0.033,
+          "std_fold_ece": 0.018,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.151,
+                "actual_frequency": 0.089,
+                "sample_count": 79
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.308,
+                "actual_frequency": 0.257,
+                "sample_count": 136
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.484,
+                "actual_frequency": 0.458,
+                "sample_count": 155
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.686,
+                "actual_frequency": 0.609,
+                "sample_count": 184
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.823,
+                "actual_frequency": 1.0,
+                "sample_count": 16
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.166,
+                "actual_frequency": 0.227,
+                "sample_count": 181
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.254,
+                "actual_frequency": 0.251,
+                "sample_count": 386
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.42,
+                "actual_frequency": 0.333,
+                "sample_count": 3
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.12,
+                "actual_frequency": 0.124,
+                "sample_count": 218
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.306,
+                "actual_frequency": 0.349,
+                "sample_count": 209
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.496,
+                "actual_frequency": 0.563,
+                "sample_count": 87
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.698,
+                "actual_frequency": 0.736,
+                "sample_count": 53
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.809,
+                "actual_frequency": 0.667,
+                "sample_count": 3
+              }
+            ]
+          }
+        },
+        "Platt": {
+          "log_loss": 0.979,
+          "brier_score": 0.58,
+          "ece_calibration_error": 0.002,
+          "accuracy_pct": 55.4,
+          "macro_f1": 0.414,
+          "mean_fold_log_loss": 0.978,
+          "std_fold_log_loss": 0.041,
+          "mean_fold_brier": 0.58,
+          "std_fold_brier": 0.031,
+          "mean_fold_ece": 0.034,
+          "std_fold_ece": 0.007,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.141,
+                "actual_frequency": 0.121,
+                "sample_count": 66
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.308,
+                "actual_frequency": 0.25,
+                "sample_count": 160
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.501,
+                "actual_frequency": 0.495,
+                "sample_count": 200
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.651,
+                "actual_frequency": 0.653,
+                "sample_count": 144
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.181,
+                "actual_frequency": 0.217,
+                "sample_count": 129
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.245,
+                "actual_frequency": 0.252,
+                "sample_count": 441
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.143,
+                "actual_frequency": 0.125,
+                "sample_count": 176
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.296,
+                "actual_frequency": 0.318,
+                "sample_count": 220
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.491,
+                "actual_frequency": 0.496,
+                "sample_count": 113
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.667,
+                "actual_frequency": 0.689,
+                "sample_count": 61
+              }
+            ]
+          }
+        },
+        "Isotonic": {
+          "log_loss": 1.013,
+          "brier_score": 0.588,
+          "ece_calibration_error": 0.042,
+          "accuracy_pct": 51.9,
+          "macro_f1": 0.434,
+          "mean_fold_log_loss": 1.012,
+          "std_fold_log_loss": 0.063,
+          "mean_fold_brier": 0.588,
+          "std_fold_brier": 0.041,
+          "mean_fold_ece": 0.07,
+          "std_fold_ece": 0.033,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.071,
+                "actual_frequency": 0.131,
+                "sample_count": 99
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.298,
+                "actual_frequency": 0.307,
+                "sample_count": 127
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.518,
+                "actual_frequency": 0.475,
+                "sample_count": 202
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.677,
+                "actual_frequency": 0.618,
+                "sample_count": 123
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.913,
+                "actual_frequency": 0.895,
+                "sample_count": 19
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.139,
+                "actual_frequency": 0.215,
+                "sample_count": 195
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.27,
+                "actual_frequency": 0.264,
+                "sample_count": 333
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.433,
+                "actual_frequency": 0.167,
+                "sample_count": 36
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.665,
+                "actual_frequency": 0.5,
+                "sample_count": 6
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.086,
+                "actual_frequency": 0.183,
+                "sample_count": 153
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.279,
+                "actual_frequency": 0.267,
+                "sample_count": 273
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.477,
+                "actual_frequency": 0.556,
+                "sample_count": 54
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.641,
+                "actual_frequency": 0.553,
+                "sample_count": 47
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.89,
+                "actual_frequency": 0.767,
+                "sample_count": 43
+              }
+            ]
+          }
+        }
+      },
+      "Dixon-Coles": {
+        "Raw": {
+          "log_loss": 0.964,
+          "brier_score": 0.574,
+          "ece_calibration_error": 0.012,
+          "accuracy_pct": 54.9,
+          "macro_f1": 0.413,
+          "mean_fold_log_loss": 0.964,
+          "std_fold_log_loss": 0.046,
+          "mean_fold_brier": 0.573,
+          "std_fold_brier": 0.034,
+          "mean_fold_ece": 0.031,
+          "std_fold_ece": 0.016,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.148,
+                "actual_frequency": 0.092,
+                "sample_count": 65
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.312,
+                "actual_frequency": 0.287,
+                "sample_count": 181
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.495,
+                "actual_frequency": 0.47,
+                "sample_count": 181
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.691,
+                "actual_frequency": 0.628,
+                "sample_count": 121
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.854,
+                "actual_frequency": 1.0,
+                "sample_count": 22
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.16,
+                "actual_frequency": 0.178,
+                "sample_count": 157
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.241,
+                "actual_frequency": 0.269,
+                "sample_count": 413
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.125,
+                "actual_frequency": 0.107,
+                "sample_count": 159
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.297,
+                "actual_frequency": 0.3,
+                "sample_count": 223
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.487,
+                "actual_frequency": 0.504,
+                "sample_count": 137
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.666,
+                "actual_frequency": 0.723,
+                "sample_count": 47
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.835,
+                "actual_frequency": 0.75,
+                "sample_count": 4
+              }
+            ]
+          }
+        },
+        "Platt": {
+          "log_loss": 0.999,
+          "brier_score": 0.594,
+          "ece_calibration_error": 0.007,
+          "accuracy_pct": 51.4,
+          "macro_f1": 0.38,
+          "mean_fold_log_loss": 0.999,
+          "std_fold_log_loss": 0.028,
+          "mean_fold_brier": 0.594,
+          "std_fold_brier": 0.021,
+          "mean_fold_ece": 0.026,
+          "std_fold_ece": 0.006,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.155,
+                "actual_frequency": 0.105,
+                "sample_count": 38
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.31,
+                "actual_frequency": 0.281,
+                "sample_count": 171
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.497,
+                "actual_frequency": 0.473,
+                "sample_count": 277
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.655,
+                "actual_frequency": 0.69,
+                "sample_count": 84
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.186,
+                "actual_frequency": 0.174,
+                "sample_count": 92
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.241,
+                "actual_frequency": 0.257,
+                "sample_count": 478
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.146,
+                "actual_frequency": 0.13,
+                "sample_count": 123
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.294,
+                "actual_frequency": 0.302,
+                "sample_count": 281
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.482,
+                "actual_frequency": 0.522,
+                "sample_count": 134
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.657,
+                "actual_frequency": 0.594,
+                "sample_count": 32
+              }
+            ]
+          }
+        },
+        "Isotonic": {
+          "log_loss": 1.012,
+          "brier_score": 0.598,
+          "ece_calibration_error": 0.022,
+          "accuracy_pct": 50.7,
+          "macro_f1": 0.392,
+          "mean_fold_log_loss": 1.012,
+          "std_fold_log_loss": 0.04,
+          "mean_fold_brier": 0.598,
+          "std_fold_brier": 0.024,
+          "mean_fold_ece": 0.042,
+          "std_fold_ece": 0.011,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.071,
+                "actual_frequency": 0.125,
+                "sample_count": 56
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.288,
+                "actual_frequency": 0.301,
+                "sample_count": 133
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.473,
+                "actual_frequency": 0.406,
+                "sample_count": 251
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.661,
+                "actual_frequency": 0.69,
+                "sample_count": 113
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.941,
+                "actual_frequency": 0.824,
+                "sample_count": 17
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.148,
+                "actual_frequency": 0.216,
+                "sample_count": 125
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.264,
+                "actual_frequency": 0.25,
+                "sample_count": 436
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.448,
+                "actual_frequency": 0.333,
+                "sample_count": 9
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.139,
+                "actual_frequency": 0.138,
+                "sample_count": 188
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.307,
+                "actual_frequency": 0.357,
+                "sample_count": 235
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.496,
+                "actual_frequency": 0.537,
+                "sample_count": 108
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.69,
+                "actual_frequency": 0.533,
+                "sample_count": 30
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.906,
+                "actual_frequency": 0.667,
+                "sample_count": 9
+              }
+            ]
+          }
+        }
+      },
+      "XGBoost": {
+        "Raw": {
+          "log_loss": 0.98,
+          "brier_score": 0.58,
+          "ece_calibration_error": 0.024,
+          "accuracy_pct": 53.5,
+          "macro_f1": 0.429,
+          "mean_fold_log_loss": 0.98,
+          "std_fold_log_loss": 0.036,
+          "mean_fold_brier": 0.58,
+          "std_fold_brier": 0.028,
+          "mean_fold_ece": 0.041,
+          "std_fold_ece": 0.015,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.135,
+                "actual_frequency": 0.083,
+                "sample_count": 72
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.309,
+                "actual_frequency": 0.269,
+                "sample_count": 145
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.489,
+                "actual_frequency": 0.482,
+                "sample_count": 164
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.686,
+                "actual_frequency": 0.57,
+                "sample_count": 158
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.859,
+                "actual_frequency": 0.871,
+                "sample_count": 31
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.146,
+                "actual_frequency": 0.213,
+                "sample_count": 216
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.272,
+                "actual_frequency": 0.26,
+                "sample_count": 335
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.463,
+                "actual_frequency": 0.316,
+                "sample_count": 19
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.105,
+                "actual_frequency": 0.144,
+                "sample_count": 209
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.3,
+                "actual_frequency": 0.333,
+                "sample_count": 231
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.494,
+                "actual_frequency": 0.577,
+                "sample_count": 71
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.712,
+                "actual_frequency": 0.714,
+                "sample_count": 56
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.847,
+                "actual_frequency": 0.667,
+                "sample_count": 3
+              }
+            ]
+          }
+        },
+        "Platt": {
+          "log_loss": 0.988,
+          "brier_score": 0.586,
+          "ece_calibration_error": 0.008,
+          "accuracy_pct": 53.9,
+          "macro_f1": 0.403,
+          "mean_fold_log_loss": 0.987,
+          "std_fold_log_loss": 0.026,
+          "mean_fold_brier": 0.586,
+          "std_fold_brier": 0.022,
+          "mean_fold_ece": 0.041,
+          "std_fold_ece": 0.014,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.146,
+                "actual_frequency": 0.106,
+                "sample_count": 66
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.315,
+                "actual_frequency": 0.291,
+                "sample_count": 165
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.504,
+                "actual_frequency": 0.488,
+                "sample_count": 215
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.652,
+                "actual_frequency": 0.653,
+                "sample_count": 124
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.178,
+                "actual_frequency": 0.186,
+                "sample_count": 118
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.245,
+                "actual_frequency": 0.259,
+                "sample_count": 452
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.145,
+                "actual_frequency": 0.133,
+                "sample_count": 158
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.296,
+                "actual_frequency": 0.315,
+                "sample_count": 241
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.487,
+                "actual_frequency": 0.504,
+                "sample_count": 115
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.662,
+                "actual_frequency": 0.625,
+                "sample_count": 56
+              }
+            ]
+          }
+        },
+        "Isotonic": {
+          "log_loss": 1.01,
+          "brier_score": 0.59,
+          "ece_calibration_error": 0.035,
+          "accuracy_pct": 52.5,
+          "macro_f1": 0.418,
+          "mean_fold_log_loss": 1.01,
+          "std_fold_log_loss": 0.043,
+          "mean_fold_brier": 0.59,
+          "std_fold_brier": 0.029,
+          "mean_fold_ece": 0.057,
+          "std_fold_ece": 0.012,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.078,
+                "actual_frequency": 0.135,
+                "sample_count": 89
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.319,
+                "actual_frequency": 0.299,
+                "sample_count": 134
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.504,
+                "actual_frequency": 0.451,
+                "sample_count": 206
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.676,
+                "actual_frequency": 0.651,
+                "sample_count": 126
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.901,
+                "actual_frequency": 0.933,
+                "sample_count": 15
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.156,
+                "actual_frequency": 0.227,
+                "sample_count": 198
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.27,
+                "actual_frequency": 0.252,
+                "sample_count": 357
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.455,
+                "actual_frequency": 0.25,
+                "sample_count": 12
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.675,
+                "actual_frequency": 0.333,
+                "sample_count": 3
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.099,
+                "actual_frequency": 0.149,
+                "sample_count": 168
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.287,
+                "actual_frequency": 0.305,
+                "sample_count": 246
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.501,
+                "actual_frequency": 0.516,
+                "sample_count": 93
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.696,
+                "actual_frequency": 0.4,
+                "sample_count": 30
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.857,
+                "actual_frequency": 0.909,
+                "sample_count": 33
+              }
+            ]
+          }
+        }
+      },
+      "LightGBM": {
+        "Raw": {
+          "log_loss": 1.001,
+          "brier_score": 0.589,
+          "ece_calibration_error": 0.034,
+          "accuracy_pct": 53.2,
+          "macro_f1": 0.448,
+          "mean_fold_log_loss": 1.001,
+          "std_fold_log_loss": 0.047,
+          "mean_fold_brier": 0.589,
+          "std_fold_brier": 0.033,
+          "mean_fold_ece": 0.053,
+          "std_fold_ece": 0.019,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.123,
+                "actual_frequency": 0.097,
+                "sample_count": 72
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.313,
+                "actual_frequency": 0.286,
+                "sample_count": 154
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.488,
+                "actual_frequency": 0.44,
+                "sample_count": 159
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.69,
+                "actual_frequency": 0.597,
+                "sample_count": 149
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.855,
+                "actual_frequency": 0.861,
+                "sample_count": 36
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.138,
+                "actual_frequency": 0.224,
+                "sample_count": 228
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.281,
+                "actual_frequency": 0.252,
+                "sample_count": 305
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.451,
+                "actual_frequency": 0.306,
+                "sample_count": 36
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.61,
+                "actual_frequency": 0.0,
+                "sample_count": 1
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.097,
+                "actual_frequency": 0.142,
+                "sample_count": 211
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.297,
+                "actual_frequency": 0.363,
+                "sample_count": 226
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.484,
+                "actual_frequency": 0.471,
+                "sample_count": 70
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.716,
+                "actual_frequency": 0.704,
+                "sample_count": 54
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.828,
+                "actual_frequency": 0.778,
+                "sample_count": 9
+              }
+            ]
+          }
+        },
+        "Platt": {
+          "log_loss": 0.992,
+          "brier_score": 0.589,
+          "ece_calibration_error": 0.006,
+          "accuracy_pct": 53.3,
+          "macro_f1": 0.397,
+          "mean_fold_log_loss": 0.992,
+          "std_fold_log_loss": 0.03,
+          "mean_fold_brier": 0.589,
+          "std_fold_brier": 0.024,
+          "mean_fold_ece": 0.04,
+          "std_fold_ece": 0.018,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.147,
+                "actual_frequency": 0.104,
+                "sample_count": 67
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.319,
+                "actual_frequency": 0.294,
+                "sample_count": 160
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.498,
+                "actual_frequency": 0.48,
+                "sample_count": 223
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.656,
+                "actual_frequency": 0.667,
+                "sample_count": 120
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.178,
+                "actual_frequency": 0.206,
+                "sample_count": 136
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.248,
+                "actual_frequency": 0.256,
+                "sample_count": 434
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.142,
+                "actual_frequency": 0.136,
+                "sample_count": 154
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.297,
+                "actual_frequency": 0.312,
+                "sample_count": 247
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.485,
+                "actual_frequency": 0.474,
+                "sample_count": 114
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.672,
+                "actual_frequency": 0.691,
+                "sample_count": 55
+              }
+            ]
+          }
+        },
+        "Isotonic": {
+          "log_loss": 1.023,
+          "brier_score": 0.599,
+          "ece_calibration_error": 0.034,
+          "accuracy_pct": 50.5,
+          "macro_f1": 0.406,
+          "mean_fold_log_loss": 1.023,
+          "std_fold_log_loss": 0.042,
+          "mean_fold_brier": 0.599,
+          "std_fold_brier": 0.028,
+          "mean_fold_ece": 0.058,
+          "std_fold_ece": 0.024,
+          "reliability_curves": {
+            "Home": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.091,
+                "actual_frequency": 0.159,
+                "sample_count": 88
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.324,
+                "actual_frequency": 0.312,
+                "sample_count": 144
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.515,
+                "actual_frequency": 0.45,
+                "sample_count": 209
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.694,
+                "actual_frequency": 0.672,
+                "sample_count": 122
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.873,
+                "actual_frequency": 0.857,
+                "sample_count": 7
+              }
+            ],
+            "Draw": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.159,
+                "actual_frequency": 0.201,
+                "sample_count": 179
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.267,
+                "actual_frequency": 0.266,
+                "sample_count": 364
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.427,
+                "actual_frequency": 0.217,
+                "sample_count": 23
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.687,
+                "actual_frequency": 0.25,
+                "sample_count": 4
+              }
+            ],
+            "Away": [
+              {
+                "bin_range": "0.0-0.2",
+                "mean_predicted_prob": 0.088,
+                "actual_frequency": 0.153,
+                "sample_count": 163
+              },
+              {
+                "bin_range": "0.2-0.4",
+                "mean_predicted_prob": 0.295,
+                "actual_frequency": 0.319,
+                "sample_count": 260
+              },
+              {
+                "bin_range": "0.4-0.6",
+                "mean_predicted_prob": 0.481,
+                "actual_frequency": 0.465,
+                "sample_count": 86
+              },
+              {
+                "bin_range": "0.6-0.8",
+                "mean_predicted_prob": 0.699,
+                "actual_frequency": 0.556,
+                "sample_count": 36
+              },
+              {
+                "bin_range": "0.8-1.0",
+                "mean_predicted_prob": 0.845,
+                "actual_frequency": 0.88,
+                "sample_count": 25
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

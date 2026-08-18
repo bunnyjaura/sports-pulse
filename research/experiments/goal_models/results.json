@@ -1,0 +1,153 @@
+{
+  "experiment_name": "Step 7 Goal Modeling Experiment (Poisson + Dixon-Coles)",
+  "dataset_matches": 1140,
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_size": 570,
+      "test_size": 114,
+      "test_window": "2023-12-30 -> 2024-04-06",
+      "poisson": {
+        "log_loss": 0.918,
+        "brier_score": 0.546,
+        "accuracy_pct": 57.0,
+        "macro_f1": 0.435
+      },
+      "dixon_coles": {
+        "log_loss": 0.928,
+        "brier_score": 0.55,
+        "accuracy_pct": 57.9,
+        "macro_f1": 0.444
+      }
+    },
+    {
+      "fold": 2,
+      "train_size": 684,
+      "test_size": 114,
+      "test_window": "2024-04-06 -> 2024-09-14",
+      "poisson": {
+        "log_loss": 0.896,
+        "brier_score": 0.521,
+        "accuracy_pct": 62.3,
+        "macro_f1": 0.464
+      },
+      "dixon_coles": {
+        "log_loss": 0.898,
+        "brier_score": 0.522,
+        "accuracy_pct": 63.2,
+        "macro_f1": 0.471
+      }
+    },
+    {
+      "fold": 3,
+      "train_size": 798,
+      "test_size": 114,
+      "test_window": "2024-09-15 -> 2024-12-14",
+      "poisson": {
+        "log_loss": 1.021,
+        "brier_score": 0.614,
+        "accuracy_pct": 48.2,
+        "macro_f1": 0.359
+      },
+      "dixon_coles": {
+        "log_loss": 1.016,
+        "brier_score": 0.61,
+        "accuracy_pct": 49.1,
+        "macro_f1": 0.368
+      }
+    },
+    {
+      "fold": 4,
+      "train_size": 912,
+      "test_size": 114,
+      "test_window": "2024-12-14 -> 2025-02-26",
+      "poisson": {
+        "log_loss": 1.021,
+        "brier_score": 0.614,
+        "accuracy_pct": 47.4,
+        "macro_f1": 0.351
+      },
+      "dixon_coles": {
+        "log_loss": 1.01,
+        "brier_score": 0.606,
+        "accuracy_pct": 48.2,
+        "macro_f1": 0.358
+      }
+    },
+    {
+      "fold": 5,
+      "train_size": 1026,
+      "test_size": 114,
+      "test_window": "2025-02-26 -> 2025-05-25",
+      "poisson": {
+        "log_loss": 0.976,
+        "brier_score": 0.584,
+        "accuracy_pct": 54.4,
+        "macro_f1": 0.404
+      },
+      "dixon_coles": {
+        "log_loss": 0.967,
+        "brier_score": 0.579,
+        "accuracy_pct": 56.1,
+        "macro_f1": 0.416
+      }
+    }
+  ],
+  "global_out_of_sample_summary": {
+    "Independent_Poisson": {
+      "log_loss": 0.966,
+      "brier_score": 0.576,
+      "accuracy_pct": 53.9,
+      "macro_f1": 0.404,
+      "ece_calibration_error": 0.012,
+      "diagnostics": {
+        "mean_actual_home_goals": 1.637,
+        "mean_predicted_home_goals": 1.654,
+        "mean_actual_away_goals": 1.475,
+        "mean_predicted_away_goals": 1.307,
+        "actual_home_distribution": {
+          "0_goals": 0.216,
+          "1_goal": 0.3,
+          "2_goals": 0.253,
+          "3_goals": 0.128,
+          "4_plus_goals": 0.104
+        },
+        "actual_away_distribution": {
+          "0_goals": 0.228,
+          "1_goal": 0.34,
+          "2_goals": 0.265,
+          "3_goals": 0.096,
+          "4_plus_goals": 0.07
+        }
+      }
+    },
+    "Dixon_Coles": {
+      "log_loss": 0.964,
+      "brier_score": 0.574,
+      "accuracy_pct": 54.9,
+      "macro_f1": 0.413,
+      "ece_calibration_error": 0.012,
+      "diagnostics": {
+        "mean_actual_home_goals": 1.637,
+        "mean_predicted_home_goals": 1.66,
+        "mean_actual_away_goals": 1.475,
+        "mean_predicted_away_goals": 1.333,
+        "actual_home_distribution": {
+          "0_goals": 0.216,
+          "1_goal": 0.3,
+          "2_goals": 0.253,
+          "3_goals": 0.128,
+          "4_plus_goals": 0.104
+        },
+        "actual_away_distribution": {
+          "0_goals": 0.228,
+          "1_goal": 0.34,
+          "2_goals": 0.265,
+          "3_goals": 0.096,
+          "4_plus_goals": 0.07
+        }
+      }
+    },
+    "poisson_vs_dixon_coles_correlation": 0.997
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "step": "step29",
+  "status": "PASS",
+  "promotionDecision": "COLDSTART_INTEGRITY_VALIDATED",
+  "testsRun": 14,
+  "failures": 0,
+  "errors": 0
+}

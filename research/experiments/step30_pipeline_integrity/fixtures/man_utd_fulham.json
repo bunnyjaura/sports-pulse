@@ -1,0 +1,16 @@
+{
+  "fixtureId": "man_utd_fulham",
+  "homeTeam": "Manchester United",
+  "awayTeam": "Fulham",
+  "date": "2026-08-14",
+  "league": "Premier League",
+  "expectedPipelineChecks": {
+    "historicalState": "PASS",
+    "targetIsolation": "PASS",
+    "bothTeamEvidence": "PASS",
+    "weightContract": "PASS",
+    "featureConnectivity": "PASS",
+    "probabilityIntegrity": "PASS",
+    "fallbackPrediction": "NOT_USED"
+  }
+}

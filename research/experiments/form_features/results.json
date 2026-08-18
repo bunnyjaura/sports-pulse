@@ -1,0 +1,137 @@
+{
+  "experiment_name": "Dynamic Rolling Form Features Experiment",
+  "fold_table_experiment_a": [
+    {
+      "fold": 1,
+      "base_loss": 0.973,
+      "exp_a_loss": 1.216,
+      "base_brier": 0.574,
+      "exp_a_brier": 0.693,
+      "base_acc": 53.5,
+      "exp_a_acc": 48.2,
+      "base_f1": 0.464,
+      "exp_a_f1": 0.389
+    },
+    {
+      "fold": 2,
+      "base_loss": 1.245,
+      "exp_a_loss": 1.291,
+      "base_brier": 0.654,
+      "exp_a_brier": 0.702,
+      "base_acc": 43.9,
+      "exp_a_acc": 43.9,
+      "base_f1": 0.371,
+      "exp_a_f1": 0.378
+    },
+    {
+      "fold": 3,
+      "base_loss": 1.061,
+      "exp_a_loss": 1.314,
+      "base_brier": 0.631,
+      "exp_a_brier": 0.748,
+      "base_acc": 48.2,
+      "exp_a_acc": 43.0,
+      "base_f1": 0.393,
+      "exp_a_f1": 0.339
+    },
+    {
+      "fold": 4,
+      "base_loss": 1.098,
+      "exp_a_loss": 1.202,
+      "base_brier": 0.644,
+      "exp_a_brier": 0.686,
+      "base_acc": 44.7,
+      "exp_a_acc": 43.0,
+      "base_f1": 0.408,
+      "exp_a_f1": 0.364
+    },
+    {
+      "fold": 5,
+      "base_loss": 1.119,
+      "exp_a_loss": 1.083,
+      "base_brier": 0.628,
+      "exp_a_brier": 0.643,
+      "base_acc": 51.8,
+      "exp_a_acc": 43.9,
+      "base_f1": 0.454,
+      "exp_a_f1": 0.354
+    }
+  ],
+  "fold_table_experiment_b": [
+    {
+      "fold": 1,
+      "exp_a_loss": 1.216,
+      "exp_b_loss": 1.238,
+      "exp_a_brier": 0.693,
+      "exp_b_brier": 0.722,
+      "exp_a_acc": 48.2,
+      "exp_b_acc": 48.2,
+      "exp_a_f1": 0.389,
+      "exp_b_f1": 0.382
+    },
+    {
+      "fold": 2,
+      "exp_a_loss": 1.291,
+      "exp_b_loss": 1.329,
+      "exp_a_brier": 0.702,
+      "exp_b_brier": 0.741,
+      "exp_a_acc": 43.9,
+      "exp_b_acc": 44.7,
+      "exp_a_f1": 0.378,
+      "exp_b_f1": 0.381
+    },
+    {
+      "fold": 3,
+      "exp_a_loss": 1.314,
+      "exp_b_loss": 1.299,
+      "exp_a_brier": 0.748,
+      "exp_b_brier": 0.749,
+      "exp_a_acc": 43.0,
+      "exp_b_acc": 43.0,
+      "exp_a_f1": 0.339,
+      "exp_b_f1": 0.344
+    },
+    {
+      "fold": 4,
+      "exp_a_loss": 1.202,
+      "exp_b_loss": 1.283,
+      "exp_a_brier": 0.686,
+      "exp_b_brier": 0.728,
+      "exp_a_acc": 43.0,
+      "exp_b_acc": 43.0,
+      "exp_a_f1": 0.364,
+      "exp_b_f1": 0.364
+    },
+    {
+      "fold": 5,
+      "exp_a_loss": 1.083,
+      "exp_b_loss": 1.075,
+      "exp_a_brier": 0.643,
+      "exp_b_brier": 0.637,
+      "exp_a_acc": 43.9,
+      "exp_b_acc": 46.5,
+      "exp_a_f1": 0.354,
+      "exp_b_f1": 0.399
+    }
+  ],
+  "global_out_of_sample_results": {
+    "Baseline": {
+      "log_loss": 1.099,
+      "brier_score": 0.626,
+      "accuracy_pct": 48.4,
+      "macro_f1": 0.419
+    },
+    "Experiment_A_Global_Form": {
+      "log_loss": 1.221,
+      "brier_score": 0.694,
+      "accuracy_pct": 44.4,
+      "macro_f1": 0.368
+    },
+    "Experiment_B_Global_Venue_Form": {
+      "log_loss": 1.245,
+      "brier_score": 0.715,
+      "accuracy_pct": 45.1,
+      "macro_f1": 0.378
+    }
+  }
+}

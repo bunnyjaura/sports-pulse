@@ -1,0 +1,22 @@
+{
+  "model_version": "football-coldstart-v2",
+  "weights": {
+    "teamStrength": 0.31113758576674866,
+    "recentForm": 0.21825565392055346,
+    "opponentStrength": 0.1555493991718704,
+    "commonOpponents": 0.11557145319785084,
+    "homeAway": 0.11439925091541933,
+    "leagueStrength": 0.06779889954786876,
+    "playerStrength": 0.017287757479688526
+  },
+  "weight_std": {
+    "teamStrength": 0.012817708956443085,
+    "recentForm": 0.012659123014664146,
+    "opponentStrength": 0.011539641773334944,
+    "commonOpponents": 0.0130913695602827,
+    "homeAway": 0.00876424112153413,
+    "leagueStrength": 0.01096232811263211,
+    "playerStrength": 0.013627297549479906
+  },
+  "is_stable": true
+}

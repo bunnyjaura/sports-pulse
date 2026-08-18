@@ -1,0 +1,8 @@
+{
+  "step": "step30",
+  "status": "PASS",
+  "promotionDecision": "PIPELINE_CONNECTIVITY_VALIDATED",
+  "testsRun": 20,
+  "failures": 0,
+  "errors": 0
+}

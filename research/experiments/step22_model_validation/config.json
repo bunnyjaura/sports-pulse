@@ -1,0 +1,23 @@
+{
+  "experiment_name": "step22_cold_start_validation_and_weight_optimization",
+  "model_version_frozen": "football-ensemble-v1",
+  "model_version_current": "football-coldstart-v1",
+  "model_version_candidate": "football-coldstart-v2",
+  "dataset_path": "data/multi_league_historical.csv",
+  "partition_periods": {
+    "train_dev": ["2016-08-01", "2021-06-30"],
+    "validation": ["2021-07-01", "2023-06-30"],
+    "holdout_test": ["2023-07-01", "2025-06-30"]
+  },
+  "random_seed": 42,
+  "leagues": ["ENG_PL", "ESP_LALIGA", "ITA_SERIEA", "GER_BUNDESLIGA", "FRA_LIGUE1"],
+  "evidence_groups": [
+    "teamStrength",
+    "recentForm",
+    "opponentStrength",
+    "commonOpponents",
+    "homeAway",
+    "leagueStrength",
+    "playerStrength"
+  ]
+}

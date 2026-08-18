@@ -1,0 +1,385 @@
+{
+  "experiment_name": "Step 11 Advanced Feature Engineering Experiment",
+  "dataset_matches": 1140,
+  "recommendation": "REQUIRES MORE VALIDATION",
+  "best_single_group": "Exp_D_Schedule_Fatigue",
+  "fold_results": [
+    {
+      "fold": 1,
+      "train_size": 570,
+      "test_size": 114,
+      "test_window": "2023-12-30 -> 2024-04-06",
+      "group_metrics": {
+        "Baseline": {
+          "log_loss": 0.948,
+          "brier_score": 0.56,
+          "ece": 0.057,
+          "accuracy_pct": 55.3
+        },
+        "Exp_A_Strength_Dynamics": {
+          "log_loss": 0.944,
+          "brier_score": 0.557,
+          "ece": 0.043,
+          "accuracy_pct": 55.3
+        },
+        "Exp_B_Recent_Form": {
+          "log_loss": 0.943,
+          "brier_score": 0.555,
+          "ece": 0.043,
+          "accuracy_pct": 55.3
+        },
+        "Exp_C_Home_Away_Venue": {
+          "log_loss": 0.951,
+          "brier_score": 0.561,
+          "ece": 0.047,
+          "accuracy_pct": 55.3
+        },
+        "Exp_D_Schedule_Fatigue": {
+          "log_loss": 0.932,
+          "brier_score": 0.552,
+          "ece": 0.043,
+          "accuracy_pct": 53.5
+        },
+        "Exp_E_HeadToHead": {
+          "log_loss": 0.957,
+          "brier_score": 0.566,
+          "ece": 0.018,
+          "accuracy_pct": 54.4
+        },
+        "Exp_F_League_Standings": {
+          "log_loss": 0.945,
+          "brier_score": 0.557,
+          "ece": 0.045,
+          "accuracy_pct": 56.1
+        }
+      }
+    },
+    {
+      "fold": 2,
+      "train_size": 684,
+      "test_size": 114,
+      "test_window": "2024-04-06 -> 2024-09-14",
+      "group_metrics": {
+        "Baseline": {
+          "log_loss": 0.902,
+          "brier_score": 0.525,
+          "ece": 0.034,
+          "accuracy_pct": 60.5
+        },
+        "Exp_A_Strength_Dynamics": {
+          "log_loss": 0.904,
+          "brier_score": 0.527,
+          "ece": 0.032,
+          "accuracy_pct": 58.8
+        },
+        "Exp_B_Recent_Form": {
+          "log_loss": 0.922,
+          "brier_score": 0.54,
+          "ece": 0.038,
+          "accuracy_pct": 60.5
+        },
+        "Exp_C_Home_Away_Venue": {
+          "log_loss": 0.915,
+          "brier_score": 0.534,
+          "ece": 0.031,
+          "accuracy_pct": 61.4
+        },
+        "Exp_D_Schedule_Fatigue": {
+          "log_loss": 0.904,
+          "brier_score": 0.527,
+          "ece": 0.024,
+          "accuracy_pct": 58.8
+        },
+        "Exp_E_HeadToHead": {
+          "log_loss": 0.904,
+          "brier_score": 0.528,
+          "ece": 0.028,
+          "accuracy_pct": 57.9
+        },
+        "Exp_F_League_Standings": {
+          "log_loss": 0.902,
+          "brier_score": 0.527,
+          "ece": 0.027,
+          "accuracy_pct": 57.9
+        }
+      }
+    },
+    {
+      "fold": 3,
+      "train_size": 798,
+      "test_size": 114,
+      "test_window": "2024-09-15 -> 2024-12-14",
+      "group_metrics": {
+        "Baseline": {
+          "log_loss": 1.014,
+          "brier_score": 0.609,
+          "ece": 0.037,
+          "accuracy_pct": 50.0
+        },
+        "Exp_A_Strength_Dynamics": {
+          "log_loss": 1.02,
+          "brier_score": 0.614,
+          "ece": 0.056,
+          "accuracy_pct": 47.4
+        },
+        "Exp_B_Recent_Form": {
+          "log_loss": 1.026,
+          "brier_score": 0.616,
+          "ece": 0.033,
+          "accuracy_pct": 48.2
+        },
+        "Exp_C_Home_Away_Venue": {
+          "log_loss": 1.011,
+          "brier_score": 0.606,
+          "ece": 0.02,
+          "accuracy_pct": 50.0
+        },
+        "Exp_D_Schedule_Fatigue": {
+          "log_loss": 1.018,
+          "brier_score": 0.61,
+          "ece": 0.03,
+          "accuracy_pct": 50.0
+        },
+        "Exp_E_HeadToHead": {
+          "log_loss": 1.014,
+          "brier_score": 0.609,
+          "ece": 0.02,
+          "accuracy_pct": 51.8
+        },
+        "Exp_F_League_Standings": {
+          "log_loss": 1.021,
+          "brier_score": 0.614,
+          "ece": 0.029,
+          "accuracy_pct": 50.9
+        }
+      }
+    },
+    {
+      "fold": 4,
+      "train_size": 912,
+      "test_size": 114,
+      "test_window": "2024-12-14 -> 2025-02-26",
+      "group_metrics": {
+        "Baseline": {
+          "log_loss": 1.014,
+          "brier_score": 0.61,
+          "ece": 0.037,
+          "accuracy_pct": 48.2
+        },
+        "Exp_A_Strength_Dynamics": {
+          "log_loss": 1.024,
+          "brier_score": 0.616,
+          "ece": 0.046,
+          "accuracy_pct": 50.0
+        },
+        "Exp_B_Recent_Form": {
+          "log_loss": 1.019,
+          "brier_score": 0.613,
+          "ece": 0.031,
+          "accuracy_pct": 50.0
+        },
+        "Exp_C_Home_Away_Venue": {
+          "log_loss": 1.03,
+          "brier_score": 0.62,
+          "ece": 0.038,
+          "accuracy_pct": 48.2
+        },
+        "Exp_D_Schedule_Fatigue": {
+          "log_loss": 1.018,
+          "brier_score": 0.612,
+          "ece": 0.041,
+          "accuracy_pct": 49.1
+        },
+        "Exp_E_HeadToHead": {
+          "log_loss": 1.032,
+          "brier_score": 0.621,
+          "ece": 0.051,
+          "accuracy_pct": 48.2
+        },
+        "Exp_F_League_Standings": {
+          "log_loss": 1.03,
+          "brier_score": 0.619,
+          "ece": 0.05,
+          "accuracy_pct": 49.1
+        }
+      }
+    },
+    {
+      "fold": 5,
+      "train_size": 1026,
+      "test_size": 114,
+      "test_window": "2025-02-26 -> 2025-05-25",
+      "group_metrics": {
+        "Baseline": {
+          "log_loss": 0.954,
+          "brier_score": 0.568,
+          "ece": 0.028,
+          "accuracy_pct": 56.1
+        },
+        "Exp_A_Strength_Dynamics": {
+          "log_loss": 0.953,
+          "brier_score": 0.567,
+          "ece": 0.024,
+          "accuracy_pct": 57.0
+        },
+        "Exp_B_Recent_Form": {
+          "log_loss": 0.945,
+          "brier_score": 0.561,
+          "ece": 0.023,
+          "accuracy_pct": 56.1
+        },
+        "Exp_C_Home_Away_Venue": {
+          "log_loss": 0.944,
+          "brier_score": 0.56,
+          "ece": 0.027,
+          "accuracy_pct": 57.9
+        },
+        "Exp_D_Schedule_Fatigue": {
+          "log_loss": 0.95,
+          "brier_score": 0.567,
+          "ece": 0.033,
+          "accuracy_pct": 55.3
+        },
+        "Exp_E_HeadToHead": {
+          "log_loss": 0.954,
+          "brier_score": 0.568,
+          "ece": 0.023,
+          "accuracy_pct": 57.0
+        },
+        "Exp_F_League_Standings": {
+          "log_loss": 0.961,
+          "brier_score": 0.573,
+          "ece": 0.02,
+          "accuracy_pct": 55.3
+        }
+      }
+    }
+  ],
+  "global_summary": {
+    "Market_Benchmark_Ref": {
+      "log_loss": 0.941,
+      "brier_score": 0.557,
+      "ece_calibration_error": 0.009,
+      "accuracy_pct": 56.3
+    },
+    "Baseline": {
+      "log_loss": 0.966,
+      "brier_score": 0.574,
+      "ece_calibration_error": 0.025,
+      "accuracy_pct": 54.0,
+      "macro_f1": 0.403,
+      "mean_fold_log_loss": 0.966,
+      "std_fold_log_loss": 0.043,
+      "mean_fold_brier": 0.574,
+      "std_fold_brier": 0.032,
+      "bootstrap_test_vs_baseline": {
+        "mean_loss_diff_base_minus_cand": 0.0,
+        "ci_95_lower": 0.0,
+        "ci_95_upper": 0.0,
+        "probability_beats_baseline": 0.0
+      }
+    },
+    "Exp_A_Strength_Dynamics": {
+      "log_loss": 0.969,
+      "brier_score": 0.576,
+      "ece_calibration_error": 0.02,
+      "accuracy_pct": 53.7,
+      "macro_f1": 0.4,
+      "mean_fold_log_loss": 0.969,
+      "std_fold_log_loss": 0.046,
+      "mean_fold_brier": 0.576,
+      "std_fold_brier": 0.034,
+      "bootstrap_test_vs_baseline": {
+        "mean_loss_diff_base_minus_cand": -0.0027,
+        "ci_95_lower": -0.0073,
+        "ci_95_upper": 0.0014,
+        "probability_beats_baseline": 0.119
+      }
+    },
+    "Exp_B_Recent_Form": {
+      "log_loss": 0.971,
+      "brier_score": 0.577,
+      "ece_calibration_error": 0.015,
+      "accuracy_pct": 54.0,
+      "macro_f1": 0.407,
+      "mean_fold_log_loss": 0.971,
+      "std_fold_log_loss": 0.043,
+      "mean_fold_brier": 0.577,
+      "std_fold_brier": 0.031,
+      "bootstrap_test_vs_baseline": {
+        "mean_loss_diff_base_minus_cand": -0.0046,
+        "ci_95_lower": -0.0114,
+        "ci_95_upper": 0.0022,
+        "probability_beats_baseline": 0.1
+      }
+    },
+    "Exp_C_Home_Away_Venue": {
+      "log_loss": 0.97,
+      "brier_score": 0.576,
+      "ece_calibration_error": 0.011,
+      "accuracy_pct": 54.6,
+      "macro_f1": 0.408,
+      "mean_fold_log_loss": 0.97,
+      "std_fold_log_loss": 0.043,
+      "mean_fold_brier": 0.576,
+      "std_fold_brier": 0.032,
+      "bootstrap_test_vs_baseline": {
+        "mean_loss_diff_base_minus_cand": -0.0037,
+        "ci_95_lower": -0.009,
+        "ci_95_upper": 0.0019,
+        "probability_beats_baseline": 0.085
+      }
+    },
+    "Exp_D_Schedule_Fatigue": {
+      "log_loss": 0.964,
+      "brier_score": 0.573,
+      "ece_calibration_error": 0.019,
+      "accuracy_pct": 53.3,
+      "macro_f1": 0.397,
+      "mean_fold_log_loss": 0.964,
+      "std_fold_log_loss": 0.046,
+      "mean_fold_brier": 0.574,
+      "std_fold_brier": 0.033,
+      "bootstrap_test_vs_baseline": {
+        "mean_loss_diff_base_minus_cand": 0.0022,
+        "ci_95_lower": -0.0039,
+        "ci_95_upper": 0.0087,
+        "probability_beats_baseline": 0.751
+      }
+    },
+    "Exp_E_HeadToHead": {
+      "log_loss": 0.972,
+      "brier_score": 0.579,
+      "ece_calibration_error": 0.017,
+      "accuracy_pct": 53.9,
+      "macro_f1": 0.403,
+      "mean_fold_log_loss": 0.972,
+      "std_fold_log_loss": 0.046,
+      "mean_fold_brier": 0.578,
+      "std_fold_brier": 0.033,
+      "bootstrap_test_vs_baseline": {
+        "mean_loss_diff_base_minus_cand": -0.0058,
+        "ci_95_lower": -0.0111,
+        "ci_95_upper": -0.0004,
+        "probability_beats_baseline": 0.02
+      }
+    },
+    "Exp_F_League_Standings": {
+      "log_loss": 0.972,
+      "brier_score": 0.578,
+      "ece_calibration_error": 0.014,
+      "accuracy_pct": 53.9,
+      "macro_f1": 0.4,
+      "mean_fold_log_loss": 0.972,
+      "std_fold_log_loss": 0.048,
+      "mean_fold_brier": 0.578,
+      "std_fold_brier": 0.035,
+      "bootstrap_test_vs_baseline": {
+        "mean_loss_diff_base_minus_cand": -0.0053,
+        "ci_95_lower": -0.011,
+        "ci_95_upper": 0.0006,
+        "probability_beats_baseline": 0.036
+      }
+    }
+  }
+}

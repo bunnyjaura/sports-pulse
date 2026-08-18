@@ -1,0 +1,30 @@
+{
+  "fixtureId": "le_havre_psg_20260814",
+  "homeTeam": "Le Havre",
+  "awayTeam": "Paris Saint-Germain",
+  "kickoffAt": "2026-08-14T18:45:00.000Z",
+  "league": "Ligue 1",
+  "season": "2026-27",
+  "actualScore": {
+    "home": 4,
+    "away": 1
+  },
+  "actualResult": "H",
+  "expectedIntegrity": {
+    "directH2HCount": 6,
+    "teamAHistoryMin": 1,
+    "teamBHistoryMin": 1,
+    "bothTeamEvidence": true,
+    "targetResultExcluded": true,
+    "futureMatchesExcluded": true,
+    "configuredWeights": {
+      "teamStrength": 0.31,
+      "recentForm": 0.22,
+      "opponentAdjusted": 0.16,
+      "homeAway": 0.12,
+      "commonOpponents": 0.11,
+      "leagueStrength": 0.08,
+      "playerStrength": 0.00
+    }
+  }
+}

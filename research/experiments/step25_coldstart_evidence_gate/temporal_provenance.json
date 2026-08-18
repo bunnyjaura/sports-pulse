@@ -1,0 +1,4 @@
+{
+  "temporal_rule": "match.kickoffAtMs < target.kickoffAtMs",
+  "future_matches_excluded": true
+}

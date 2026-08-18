@@ -1,0 +1,16 @@
+{
+  "fixtureId": "bilbao_getafe",
+  "homeTeam": "Athletic Bilbao",
+  "awayTeam": "Getafe",
+  "date": "2026-08-13",
+  "league": "La Liga",
+  "expectedPipelineChecks": {
+    "historicalState": "PASS",
+    "targetIsolation": "PASS",
+    "bothTeamEvidence": "PASS",
+    "weightContract": "PASS",
+    "featureConnectivity": "PASS",
+    "probabilityIntegrity": "PASS",
+    "fallbackPrediction": "NOT_USED"
+  }
+}

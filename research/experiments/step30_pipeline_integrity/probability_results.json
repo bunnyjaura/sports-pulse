@@ -1,0 +1,6 @@
+{
+  "probabilitySum": 1.0,
+  "probabilityBoundsPass": true,
+  "nanInfCheckPass": true,
+  "softmaxNormalizerStatus": "PASS"
+}

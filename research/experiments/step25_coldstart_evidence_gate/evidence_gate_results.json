@@ -1,0 +1,18 @@
+{
+  "bastia_vs_psg_2016_08_12": {
+    "mode": "UNAVAILABLE",
+    "reason": "NO_PRE_MATCH_EVIDENCE",
+    "probabilities": null,
+    "status": "PASS"
+  },
+  "first_h2h_with_history": {
+    "mode": "COLD_START",
+    "model": "football-coldstart-v2",
+    "status": "PASS"
+  },
+  "arsenal_vs_chelsea_full": {
+    "mode": "FULL_HISTORY",
+    "model": "football-ensemble-v1",
+    "status": "PASS"
+  }
+}
