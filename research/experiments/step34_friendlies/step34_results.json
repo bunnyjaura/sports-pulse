@@ -1,0 +1,161 @@
+{
+  "experiment_name": "Step 34 International Club Friendlies Audit",
+  "provenance_audit": {
+    "total_matches": 1936,
+    "valid_pre_kickoff": 1936,
+    "post_kickoff": 0,
+    "missing_timestamps": 0,
+    "status": "PASS"
+  },
+  "dataset_integration": [
+    {
+      "competition": "La Liga",
+      "competitionType": "COMPETITIVE_LEAGUE",
+      "matches": 380
+    },
+    {
+      "competition": "Premier League",
+      "competitionType": "COMPETITIVE_LEAGUE",
+      "matches": 380
+    },
+    {
+      "competition": "Serie A",
+      "competitionType": "COMPETITIVE_LEAGUE",
+      "matches": 380
+    },
+    {
+      "competition": "Bundesliga",
+      "competitionType": "COMPETITIVE_LEAGUE",
+      "matches": 306
+    },
+    {
+      "competition": "Ligue 1",
+      "competitionType": "COMPETITIVE_LEAGUE",
+      "matches": 306
+    },
+    {
+      "competition": "International Club Friendly",
+      "competitionType": "FRIENDLY",
+      "matches": 184
+    }
+  ],
+  "comparative_performance": {
+    "competitive_leagues": {
+      "matches": 1752,
+      "accuracy_pct": 51.7,
+      "log_loss": 1.0085,
+      "brier_score": 0.6033,
+      "ece": 0.0264,
+      "macro_f1": 0.381,
+      "draw_recall_pct": 0.0,
+      "draw_precision_pct": 0.0,
+      "coverage_pct": 100.0,
+      "sample_status": "HIGHER_CONFIDENCE_SAMPLE"
+    },
+    "international_friendlies": {
+      "matches": 184,
+      "accuracy_pct": 39.7,
+      "log_loss": 1.1194,
+      "brier_score": 0.6816,
+      "ece": 0.1128,
+      "macro_f1": 0.288,
+      "draw_recall_pct": 0.0,
+      "draw_precision_pct": 0.0,
+      "coverage_pct": 100.0,
+      "sample_status": "ANALYTICS_ELIGIBLE"
+    }
+  },
+  "league_breakdowns": [
+    {
+      "matches": 306,
+      "accuracy_pct": 52.9,
+      "log_loss": 0.9857,
+      "brier_score": 0.588,
+      "ece": 0.0487,
+      "macro_f1": 0.395,
+      "draw_recall_pct": 0.0,
+      "draw_precision_pct": 0.0,
+      "coverage_pct": 100.0,
+      "sample_status": "HIGHER_CONFIDENCE_SAMPLE",
+      "competitionName": "Bundesliga",
+      "competitionType": "COMPETITIVE_LEAGUE"
+    },
+    {
+      "matches": 380,
+      "accuracy_pct": 53.9,
+      "log_loss": 0.9878,
+      "brier_score": 0.5889,
+      "ece": 0.0477,
+      "macro_f1": 0.38,
+      "draw_recall_pct": 0.0,
+      "draw_precision_pct": 0.0,
+      "coverage_pct": 100.0,
+      "sample_status": "HIGHER_CONFIDENCE_SAMPLE",
+      "competitionName": "Premier League",
+      "competitionType": "COMPETITIVE_LEAGUE"
+    },
+    {
+      "matches": 380,
+      "accuracy_pct": 53.2,
+      "log_loss": 1.0047,
+      "brier_score": 0.5998,
+      "ece": 0.0304,
+      "macro_f1": 0.394,
+      "draw_recall_pct": 0.0,
+      "draw_precision_pct": 0.0,
+      "coverage_pct": 100.0,
+      "sample_status": "HIGHER_CONFIDENCE_SAMPLE",
+      "competitionName": "La Liga",
+      "competitionType": "COMPETITIVE_LEAGUE"
+    },
+    {
+      "matches": 380,
+      "accuracy_pct": 51.3,
+      "log_loss": 1.0181,
+      "brier_score": 0.6097,
+      "ece": 0.0685,
+      "macro_f1": 0.39,
+      "draw_recall_pct": 0.0,
+      "draw_precision_pct": 0.0,
+      "coverage_pct": 100.0,
+      "sample_status": "HIGHER_CONFIDENCE_SAMPLE",
+      "competitionName": "Serie A",
+      "competitionType": "COMPETITIVE_LEAGUE"
+    },
+    {
+      "matches": 306,
+      "accuracy_pct": 46.1,
+      "log_loss": 1.0498,
+      "brier_score": 0.6326,
+      "ece": 0.0662,
+      "macro_f1": 0.343,
+      "draw_recall_pct": 0.0,
+      "draw_precision_pct": 0.0,
+      "coverage_pct": 100.0,
+      "sample_status": "HIGHER_CONFIDENCE_SAMPLE",
+      "competitionName": "Ligue 1",
+      "competitionType": "COMPETITIVE_LEAGUE"
+    },
+    {
+      "matches": 184,
+      "accuracy_pct": 39.7,
+      "log_loss": 1.1194,
+      "brier_score": 0.6816,
+      "ece": 0.1128,
+      "macro_f1": 0.288,
+      "draw_recall_pct": 0.0,
+      "draw_precision_pct": 0.0,
+      "coverage_pct": 100.0,
+      "sample_status": "ANALYTICS_ELIGIBLE",
+      "competitionName": "International Club Friendly",
+      "competitionType": "FRIENDLY"
+    }
+  ],
+  "friendly_model_experiments": {
+    "model_a_baseline": 1.1194,
+    "model_b_indicator": 1.1149,
+    "model_c_calibration": 1.1104,
+    "model_d_separate": 1.1362,
+    "production_decision": "ISOLATED_ANALYTICS_ONLY"
+  }
+}

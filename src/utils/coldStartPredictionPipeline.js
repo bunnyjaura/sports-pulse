@@ -12,6 +12,7 @@ import { computeCommonOpponentEvidence } from './commonOpponentEngine';
 import { normalizeOutcomeProbabilities } from './probabilityIntegrity';
 import { auditTargetIsolation } from './targetIsolationAudit';
 import { auditFeatureSemantics } from './coldStartFeatureSemantics';
+import { trainDixonColesModel, predictMatchDixonColes } from './dixonColes';
 
 function extractPreMatchFeatures(state, commonOpp, perturbedFeatureValues) {
   const pVal = (key, defaultVal) => (perturbedFeatureValues?.[key] !== undefined ? perturbedFeatureValues[key] : defaultVal);
@@ -203,10 +204,31 @@ export function runColdStartPredictionPipeline({
 
   const featureContributions = {};
 
-  // Baseline priors (historical football baseline ~44% Home, 26% Draw, 30% Away)
-  let homeScore = 0.44;
-  let drawScore = 0.26;
-  let awayScore = 0.30;
+  // Option A: Learned Elo Prior Mapping (Multinomial Logistic Regression parameters on historical data)
+  const eloDiff = rawFeatures.eloDifference || 0;
+  const zHome = 0.22 + (0.0038 * eloDiff);
+  const zDraw = -0.35 - (0.0005 * Math.abs(eloDiff));
+  const zAway = -0.15 - (0.0036 * eloDiff);
+
+  const expH = Math.exp(zHome);
+  const expD = Math.exp(zDraw);
+  const expA = Math.exp(zAway);
+  const sumExp = expH + expD + expA;
+
+  let homeScore = expH / sumExp;
+  let drawScore = expD / sumExp;
+  let awayScore = expA / sumExp;
+
+  // Option C: Dixon-Coles Integration (N >= 5 with sample shrinkage)
+  const minN = Math.min(teamAMatches.length, teamBMatches.length);
+  if (minN >= 5) {
+    const dcModel = trainDixonColesModel(state.preMatchMatches, cutoff);
+    const dcPred = predictMatchDixonColes(homeTeamName, awayTeamName, dcModel, { eloDiff });
+    const shrink = Math.min(1.0, minN / (minN + 5.0));
+    homeScore = (1.0 - shrink) * homeScore + shrink * dcPred.homeWinProb;
+    drawScore = (1.0 - shrink) * drawScore + shrink * dcPred.drawProb;
+    awayScore = (1.0 - shrink) * awayScore + shrink * dcPred.awayWinProb;
+  }
 
   for (const [feat, effW] of Object.entries(effectiveWeights)) {
     if (effW > 0 && availableMap[feat] === true) {

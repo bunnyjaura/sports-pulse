@@ -1,0 +1,48 @@
+{
+  "experiment_name": "Cold-Start V2 Optimization Suite",
+  "evaluated_matches": 570,
+  "results_summary": {
+    "Baseline_ColdStart_V1": {
+      "log_loss": 0.9839,
+      "brier_score": 0.5858,
+      "accuracy_pct": 54.21,
+      "ece_calibration_error": 0.0847
+    },
+    "Learned_Elo_Priors": {
+      "log_loss": 0.9687,
+      "brier_score": 0.5754,
+      "accuracy_pct": 54.56,
+      "ece_calibration_error": 0.0426
+    },
+    "Elo_Plus_DC_N3": {
+      "log_loss": 0.9616,
+      "brier_score": 0.572,
+      "accuracy_pct": 54.56,
+      "ece_calibration_error": 0.0209
+    },
+    "Elo_Plus_DC_N5": {
+      "log_loss": 0.9621,
+      "brier_score": 0.5724,
+      "accuracy_pct": 54.56,
+      "ece_calibration_error": 0.024
+    },
+    "Elo_Plus_DC_N8": {
+      "log_loss": 0.9628,
+      "brier_score": 0.5729,
+      "accuracy_pct": 54.56,
+      "ece_calibration_error": 0.0239
+    },
+    "Elo_Plus_DC_N10": {
+      "log_loss": 0.963,
+      "brier_score": 0.5731,
+      "accuracy_pct": 54.56,
+      "ece_calibration_error": 0.0253
+    },
+    "Elo_Plus_DC_Tau_Optimized": {
+      "log_loss": 0.9763,
+      "brier_score": 0.5799,
+      "accuracy_pct": 54.56,
+      "ece_calibration_error": 0.025
+    }
+  }
+}

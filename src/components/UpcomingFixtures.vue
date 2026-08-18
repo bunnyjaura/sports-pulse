@@ -152,6 +152,44 @@
             </div>
           </div>
 
+          <!-- Goal Expectancy & Market Probabilities Section (Step 31/33) -->
+          <div class="goal-markets-card font-mono" v-if="activePrediction.expectedGoals">
+            <h4 class="breakdown-title text-cyan"><Activity :size="16" /> Expected Goals (xG) & Goal Market Probabilities</h4>
+            <div class="goal-stats-grid">
+              <!-- Expected Goals (xG) & Scoreline -->
+              <div class="g-stat-box">
+                <span class="g-label">Expected Team Goals (xG)</span>
+                <div class="xg-row">
+                  <span class="xg-val text-cyan">{{ selectedFixtureModal.homeTeam?.name || 'Home' }}: <strong>{{ activePrediction.expectedGoals.home }}</strong></span>
+                  <span class="xg-val text-cyan">{{ selectedFixtureModal.awayTeam?.name || 'Away' }}: <strong>{{ activePrediction.expectedGoals.away }}</strong></span>
+                </div>
+                <div class="most-likely-score" v-if="activePrediction.mostLikelyScore">
+                  <span>Most Likely Scoreline: <strong class="text-emerald">{{ activePrediction.mostLikelyScore.home }} - {{ activePrediction.mostLikelyScore.away }}</strong> ({{ (activePrediction.mostLikelyScore.prob * 100).toFixed(1) }}%)</span>
+                </div>
+              </div>
+
+              <!-- Over / Under 1.5, 2.5, 3.5 & BTTS -->
+              <div class="g-market-chips" v-if="activePrediction.overUnder">
+                <div class="chip-item">
+                  <span class="chip-label">Over 1.5 Goals:</span>
+                  <span class="chip-val text-emerald">{{ (activePrediction.overUnder.over15 * 100).toFixed(1) }}%</span>
+                </div>
+                <div class="chip-item highlight-chip">
+                  <span class="chip-label">Over 2.5 Goals:</span>
+                  <span class="chip-val text-cyan font-bold">{{ (activePrediction.overUnder.over25 * 100).toFixed(1) }}%</span>
+                </div>
+                <div class="chip-item">
+                  <span class="chip-label">Over 3.5 Goals:</span>
+                  <span class="chip-val text-muted">{{ (activePrediction.overUnder.over35 * 100).toFixed(1) }}%</span>
+                </div>
+                <div class="chip-item highlight-chip" v-if="activePrediction.btts">
+                  <span class="chip-label">Both Teams To Score (BTTS):</span>
+                  <span class="chip-val text-emerald font-bold">{{ (activePrediction.btts.yes * 100).toFixed(1) }}%</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Component Model Breakdown -->
           <div class="component-breakdown font-mono">
             <h4 class="breakdown-title">📊 Component Model Breakdown (50/50 Ensemble)</h4>
@@ -188,7 +226,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { Calendar, Sparkles, X, RefreshCw } from 'lucide-vue-next';
+import { Calendar, Sparkles, X, RefreshCw, Activity } from 'lucide-vue-next';
 import { LiveFixtureService } from '../services/liveFixtureService';
 import { HistoricalMatchService } from '../services/historicalMatchService';
 import { predictMatch } from '../utils/predictionEngine';
@@ -388,21 +426,37 @@ function formatDisplayDate(dateStr) {
 .date-filter-group {
   display: flex;
   gap: 8px;
+  overflow-x: auto;
+  flex-wrap: wrap;
+  padding: 4px 0;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
 }
 
 .btn-date {
-  background: rgba(15, 23, 42, 0.6);
+  background: rgba(15, 23, 42, 0.7);
   border: 1px solid var(--border-color);
   color: var(--text-muted);
-  padding: 4px 12px;
-  border-radius: 6px;
+  padding: 6px 14px;
+  border-radius: 8px;
   font-size: 0.8rem;
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.btn-date:hover {
+  background: rgba(0, 242, 254, 0.08);
+  border-color: rgba(0, 242, 254, 0.3);
+  color: #e2e8f0;
 }
 
 .btn-date.active {
+  background: rgba(0, 242, 254, 0.15);
   color: var(--primary-cyan);
   border-color: var(--primary-cyan);
+  box-shadow: 0 0 8px rgba(0, 242, 254, 0.2);
 }
 
 .date-block {
@@ -625,11 +679,67 @@ function formatDisplayDate(dateStr) {
 .p-title { font-size: 0.8rem; color: var(--text-muted); }
 .p-val { font-size: 1.6rem; font-weight: 800; }
 
-.component-breakdown {
+.component-breakdown,
+.goal-markets-card {
   background: rgba(15, 23, 42, 0.6);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   padding: 14px;
+}
+
+.goal-stats-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.g-stat-box {
+  background: rgba(7, 11, 18, 0.5);
+  padding: 10px 14px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.g-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.xg-row {
+  display: flex;
+  justify-content: space-around;
+  font-size: 0.9rem;
+}
+
+.most-likely-score {
+  border-top: 1px dashed rgba(51, 65, 85, 0.6);
+  padding-top: 6px;
+  font-size: 0.8rem;
+  text-align: center;
+}
+
+.g-market-chips {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+}
+
+.chip-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(7, 11, 18, 0.5);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+}
+
+.highlight-chip {
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.3);
 }
 
 .breakdown-title {
@@ -688,15 +798,30 @@ function formatDisplayDate(dateStr) {
     justify-content: space-between;
   }
 
-  .league-filter-group {
+  .league-filter-group,
+  .date-filter-group {
     overflow-x: auto;
     flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch;
-    padding: 6px;
+    padding: 6px 2px;
+    gap: 6px;
+    scrollbar-width: none;
   }
 
-  .btn-league {
+  .league-filter-group::-webkit-scrollbar,
+  .date-filter-group::-webkit-scrollbar {
+    display: none;
+  }
+
+  .btn-league,
+  .btn-date {
     flex-shrink: 0;
+    min-height: 38px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .modal-card {

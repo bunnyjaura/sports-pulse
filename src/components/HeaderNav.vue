@@ -106,7 +106,7 @@
 
 <script setup>
 import { ref, watch, nextTick } from 'vue';
-import { Activity, LayoutDashboard, Calendar, History, GitBranch, Cpu, TrendingUp, RefreshCw, Upload, Menu, X } from 'lucide-vue-next';
+import { Activity, LayoutDashboard, Calendar, History, GitBranch, Cpu, TrendingUp, BarChart2, RefreshCw, Upload, Menu, X } from 'lucide-vue-next';
 
 const props = defineProps({
   activeTab: { type: String, default: 'upcoming' },
@@ -122,6 +122,7 @@ const isDrawerOpen = ref(false);
 const tabs = [
   { id: 'upcoming', label: 'Upcoming Fixtures', icon: Calendar, badge: 'Real APIs' },
   { id: 'pastmatches', label: 'Past Match Audit', icon: History, badge: 'Pre-Match' },
+  { id: 'analytics', label: 'Performance Analytics', icon: BarChart2, badge: 'Step 32' },
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'walkforward', label: 'Walk-Forward Lab', icon: GitBranch },
   { id: 'montecarlo', label: '10k Simulator', icon: Cpu },

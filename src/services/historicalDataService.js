@@ -78,13 +78,18 @@ export class HistoricalDataService {
       seenKeys.add(dedupKey);
 
       const calculatedSeason = r.season || getSeasonFromKickoffDate(dateNorm);
+      const competitionType = r.competitionType || (leagueId === 'INT_FRIENDLY' || (r.leagueName && r.leagueName.includes('Friendly')) ? 'FRIENDLY' : 'COMPETITIVE_LEAGUE');
+      const competitionName = r.competitionName || (competitionType === 'FRIENDLY' ? 'International Club Friendly' : (r.league || r.leagueName || 'Premier League'));
 
       validRows++;
       processed.push({
         id: r.id || dedupKey,
         leagueId,
-        leagueName: r.league || r.leagueName || 'Premier League',
-        league: r.league || r.leagueName || 'Premier League',
+        leagueName: competitionName,
+        league: competitionName,
+        competitionId: leagueId,
+        competitionName,
+        competitionType,
         season: calculatedSeason,
         homeTeam,
         awayTeam,
@@ -120,4 +125,8 @@ export class HistoricalDataService {
 
     return this.cachedResult;
   }
+}
+
+export function getHistoricalDataset() {
+  return HistoricalDataService.loadDataset().matches;
 }

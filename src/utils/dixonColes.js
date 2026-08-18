@@ -135,6 +135,21 @@ export function predictMatchDixonColes(homeTeam, awayTeam, model, options = {}) 
   drawProb /= total;
   awayWinProb /= total;
 
+  let over15Prob = 0;
+  let over25Prob = 0;
+  let over35Prob = 0;
+  let bttsProb = 0;
+
+  for (let i = 0; i <= maxGoals; i++) {
+    for (let j = 0; j <= maxGoals; j++) {
+      const p = matrix[i][j] / total;
+      if (i + j > 1.5) over15Prob += p;
+      if (i + j > 2.5) over25Prob += p;
+      if (i + j > 3.5) over35Prob += p;
+      if (i >= 1 && j >= 1) bttsProb += p;
+    }
+  }
+
   return {
     homeTeam,
     awayTeam,
@@ -143,6 +158,18 @@ export function predictMatchDixonColes(homeTeam, awayTeam, model, options = {}) 
     homeWinProb: parseFloat(homeWinProb.toFixed(3)),
     drawProb: parseFloat(drawProb.toFixed(3)),
     awayWinProb: parseFloat(awayWinProb.toFixed(3)),
+    overUnder: {
+      over15: parseFloat(over15Prob.toFixed(3)),
+      under15: parseFloat((1.0 - over15Prob).toFixed(3)),
+      over25: parseFloat(over25Prob.toFixed(3)),
+      under25: parseFloat((1.0 - over25Prob).toFixed(3)),
+      over35: parseFloat(over35Prob.toFixed(3)),
+      under35: parseFloat((1.0 - over35Prob).toFixed(3))
+    },
+    btts: {
+      yes: parseFloat(bttsProb.toFixed(3)),
+      no: parseFloat((1.0 - bttsProb).toFixed(3))
+    },
     mostLikelyScore: {
       ...mostLikelyScore,
       prob: parseFloat((mostLikelyScore.prob / total).toFixed(3))

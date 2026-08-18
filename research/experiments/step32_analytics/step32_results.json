@@ -1,0 +1,137 @@
+{
+  "experiment_name": "Step 32 Prediction Performance Analytics",
+  "total_evaluated_matches": 1752,
+  "minimum_sample_threshold": 100,
+  "league_leaderboard": [
+    {
+      "leagueId": "GER_BUNDESLIGA",
+      "leagueName": "GER_BUNDESLIGA",
+      "matches": 306,
+      "correct": 166,
+      "accuracy_pct": 54.2,
+      "ci_95_text": "48.6% - 59.7%",
+      "log_loss": 0.9464,
+      "brier_score": 0.5597,
+      "is_sufficient": true,
+      "sample_status": "RELIABLE_SAMPLE"
+    },
+    {
+      "leagueId": "ESP_LALIGA",
+      "leagueName": "ESP_LALIGA",
+      "matches": 380,
+      "correct": 210,
+      "accuracy_pct": 55.3,
+      "ci_95_text": "50.2% - 60.2%",
+      "log_loss": 0.9473,
+      "brier_score": 0.563,
+      "is_sufficient": true,
+      "sample_status": "RELIABLE_SAMPLE"
+    },
+    {
+      "leagueId": "ENG_PL",
+      "leagueName": "ENG_PL",
+      "matches": 380,
+      "correct": 212,
+      "accuracy_pct": 55.8,
+      "ci_95_text": "50.8% - 60.7%",
+      "log_loss": 0.9662,
+      "brier_score": 0.5735,
+      "is_sufficient": true,
+      "sample_status": "RELIABLE_SAMPLE"
+    },
+    {
+      "leagueId": "ITA_SERIEA",
+      "leagueName": "ITA_SERIEA",
+      "matches": 380,
+      "correct": 209,
+      "accuracy_pct": 55.0,
+      "ci_95_text": "50.0% - 59.9%",
+      "log_loss": 0.9668,
+      "brier_score": 0.576,
+      "is_sufficient": true,
+      "sample_status": "RELIABLE_SAMPLE"
+    },
+    {
+      "leagueId": "FRA_LIGUE1",
+      "leagueName": "FRA_LIGUE1",
+      "matches": 306,
+      "correct": 156,
+      "accuracy_pct": 51.0,
+      "ci_95_text": "45.4% - 56.5%",
+      "log_loss": 1.0144,
+      "brier_score": 0.6096,
+      "is_sufficient": true,
+      "sample_status": "RELIABLE_SAMPLE"
+    }
+  ],
+  "confidence_buckets": [
+    {
+      "bucket": "50-55%",
+      "matches": 193,
+      "correct": 107,
+      "accuracy_pct": 55.4,
+      "avg_confidence_pct": 52.7,
+      "log_loss": 0.9895,
+      "calibration_delta": 2.8
+    },
+    {
+      "bucket": "55-60%",
+      "matches": 215,
+      "correct": 134,
+      "accuracy_pct": 62.3,
+      "avg_confidence_pct": 57.3,
+      "log_loss": 0.9088,
+      "calibration_delta": 5.1
+    },
+    {
+      "bucket": "60-65%",
+      "matches": 130,
+      "correct": 86,
+      "accuracy_pct": 66.2,
+      "avg_confidence_pct": 62.2,
+      "log_loss": 0.856,
+      "calibration_delta": 3.9
+    },
+    {
+      "bucket": "65-70%",
+      "matches": 151,
+      "correct": 108,
+      "accuracy_pct": 71.5,
+      "avg_confidence_pct": 67.3,
+      "log_loss": 0.7811,
+      "calibration_delta": 4.2
+    },
+    {
+      "bucket": "70%+",
+      "matches": 1063,
+      "correct": 518,
+      "accuracy_pct": 48.7,
+      "avg_confidence_pct": 47.7,
+      "log_loss": 1.0149,
+      "calibration_delta": 1.0
+    }
+  ],
+  "class_performance": [
+    {
+      "outcome": "Home Win (0)",
+      "predictions": 764,
+      "precision": 0.552,
+      "recall": 0.842,
+      "f1": 0.667
+    },
+    {
+      "outcome": "Draw (1)",
+      "predictions": 468,
+      "precision": 1.0,
+      "recall": 0.002,
+      "f1": 0.004
+    },
+    {
+      "outcome": "Away Win (2)",
+      "predictions": 520,
+      "precision": 0.526,
+      "recall": 0.594,
+      "f1": 0.558
+    }
+  ]
+}

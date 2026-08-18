@@ -1,0 +1,424 @@
+{
+  "experiment_name": "Step 31 Football Prediction Engine Improvement",
+  "evaluated_matches": 570,
+  "walk_forward_folds": [
+    {
+      "fold": 1,
+      "train_matches": 570,
+      "test_matches": 114,
+      "log_loss_baseline": 0.9427,
+      "log_loss_opt_ensemble": 0.9416,
+      "log_loss_platt": 1.0092,
+      "log_loss_market": 0.8852,
+      "opt_weights": {
+        "CatBoost": 0.9,
+        "XGBoost": 0.0,
+        "DixonColes": 0.1
+      }
+    },
+    {
+      "fold": 2,
+      "train_matches": 684,
+      "test_matches": 114,
+      "log_loss_baseline": 0.9023,
+      "log_loss_opt_ensemble": 0.8968,
+      "log_loss_platt": 0.9434,
+      "log_loss_market": 0.8766,
+      "opt_weights": {
+        "CatBoost": 0.4,
+        "XGBoost": 0.0,
+        "DixonColes": 0.6
+      }
+    },
+    {
+      "fold": 3,
+      "train_matches": 798,
+      "test_matches": 114,
+      "log_loss_baseline": 1.014,
+      "log_loss_opt_ensemble": 1.0202,
+      "log_loss_platt": 1.0236,
+      "log_loss_market": 0.9881,
+      "opt_weights": {
+        "CatBoost": 0.0,
+        "XGBoost": 0.2,
+        "DixonColes": 0.8
+      }
+    },
+    {
+      "fold": 4,
+      "train_matches": 912,
+      "test_matches": 114,
+      "log_loss_baseline": 1.0065,
+      "log_loss_opt_ensemble": 1.0144,
+      "log_loss_platt": 1.0188,
+      "log_loss_market": 0.9985,
+      "opt_weights": {
+        "CatBoost": 0.7,
+        "XGBoost": 0.0,
+        "DixonColes": 0.3
+      }
+    },
+    {
+      "fold": 5,
+      "train_matches": 1026,
+      "test_matches": 114,
+      "log_loss_baseline": 0.9619,
+      "log_loss_opt_ensemble": 0.9618,
+      "log_loss_platt": 0.992,
+      "log_loss_market": 0.9483,
+      "opt_weights": {
+        "CatBoost": 0.2,
+        "XGBoost": 0.0,
+        "DixonColes": 0.8
+      }
+    }
+  ],
+  "global_metrics": {
+    "Baseline_5050_CatBoost_DC": {
+      "log_loss": 0.9655,
+      "brier_score": 0.5736,
+      "accuracy_pct": 53.86,
+      "ece_calibration_error": 0.0275,
+      "precision": [
+        0.542,
+        0.0,
+        0.532
+      ],
+      "recall": [
+        0.826,
+        0.0,
+        0.568
+      ],
+      "f1_score": [
+        0.655,
+        0.0,
+        0.55
+      ]
+    },
+    "Market_Odds": {
+      "log_loss": 0.9393,
+      "brier_score": 0.5557,
+      "accuracy_pct": 56.49,
+      "ece_calibration_error": 0.0335,
+      "precision": [
+        0.56,
+        0.0,
+        0.574
+      ],
+      "recall": [
+        0.851,
+        0.0,
+        0.616
+      ],
+      "f1_score": [
+        0.675,
+        0.0,
+        0.594
+      ]
+    },
+    "CatBoost_Raw_EloOnly": {
+      "log_loss": 0.9817,
+      "brier_score": 0.5839,
+      "accuracy_pct": 54.04,
+      "ece_calibration_error": 0.0451,
+      "precision": [
+        0.538,
+        0.0,
+        0.544
+      ],
+      "recall": [
+        0.842,
+        0.0,
+        0.553
+      ],
+      "f1_score": [
+        0.657,
+        0.0,
+        0.548
+      ]
+    },
+    "CatBoost_Raw_FullFeat": {
+      "log_loss": 0.977,
+      "brier_score": 0.5797,
+      "accuracy_pct": 55.26,
+      "ece_calibration_error": 0.023,
+      "precision": [
+        0.557,
+        0.0,
+        0.548
+      ],
+      "recall": [
+        0.809,
+        0.0,
+        0.632
+      ],
+      "f1_score": [
+        0.66,
+        0.0,
+        0.587
+      ]
+    },
+    "XGBoost_Raw_FullFeat": {
+      "log_loss": 1.0135,
+      "brier_score": 0.6011,
+      "accuracy_pct": 54.56,
+      "ece_calibration_error": 0.0859,
+      "precision": [
+        0.56,
+        0.345,
+        0.55
+      ],
+      "recall": [
+        0.788,
+        0.072,
+        0.584
+      ],
+      "f1_score": [
+        0.655,
+        0.119,
+        0.566
+      ]
+    },
+    "DixonColes_Raw": {
+      "log_loss": 0.9637,
+      "brier_score": 0.5735,
+      "accuracy_pct": 54.91,
+      "ece_calibration_error": 0.0256,
+      "precision": [
+        0.551,
+        0.0,
+        0.549
+      ],
+      "recall": [
+        0.809,
+        0.0,
+        0.621
+      ],
+      "f1_score": [
+        0.655,
+        0.0,
+        0.583
+      ]
+    },
+    "Ensemble_CatBoost_DC_5050_FullFeat": {
+      "log_loss": 0.9643,
+      "brier_score": 0.5723,
+      "accuracy_pct": 55.09,
+      "ece_calibration_error": 0.0239,
+      "precision": [
+        0.555,
+        0.0,
+        0.544
+      ],
+      "recall": [
+        0.813,
+        0.0,
+        0.621
+      ],
+      "f1_score": [
+        0.66,
+        0.0,
+        0.58
+      ]
+    },
+    "Ensemble_XGBoost_DC_5050_FullFeat": {
+      "log_loss": 0.9722,
+      "brier_score": 0.5775,
+      "accuracy_pct": 54.56,
+      "ece_calibration_error": 0.0419,
+      "precision": [
+        0.552,
+        0.0,
+        0.548
+      ],
+      "recall": [
+        0.813,
+        0.0,
+        0.605
+      ],
+      "f1_score": [
+        0.658,
+        0.0,
+        0.575
+      ]
+    },
+    "Ensemble_Trio_333333_FullFeat": {
+      "log_loss": 0.9713,
+      "brier_score": 0.5766,
+      "accuracy_pct": 55.44,
+      "ece_calibration_error": 0.0329,
+      "precision": [
+        0.558,
+        0.0,
+        0.554
+      ],
+      "recall": [
+        0.822,
+        0.0,
+        0.621
+      ],
+      "f1_score": [
+        0.664,
+        0.0,
+        0.586
+      ]
+    },
+    "Optimized_Ensemble_FullFeat": {
+      "log_loss": 0.9669,
+      "brier_score": 0.5744,
+      "accuracy_pct": 55.09,
+      "ece_calibration_error": 0.0228,
+      "precision": [
+        0.551,
+        0.0,
+        0.55
+      ],
+      "recall": [
+        0.805,
+        0.0,
+        0.632
+      ],
+      "f1_score": [
+        0.654,
+        0.0,
+        0.588
+      ]
+    },
+    "Calibrated_Platt_BestEnsemble": {
+      "log_loss": 0.9974,
+      "brier_score": 0.593,
+      "accuracy_pct": 54.39,
+      "ece_calibration_error": 0.036,
+      "precision": [
+        0.541,
+        0.0,
+        0.55
+      ],
+      "recall": [
+        0.83,
+        0.0,
+        0.579
+      ],
+      "f1_score": [
+        0.655,
+        0.0,
+        0.564
+      ]
+    },
+    "Calibrated_Isotonic_BestEnsemble": {
+      "log_loss": 1.5263,
+      "brier_score": 0.6009,
+      "accuracy_pct": 53.68,
+      "ece_calibration_error": 0.066,
+      "precision": [
+        0.547,
+        0.265,
+        0.568
+      ],
+      "recall": [
+        0.797,
+        0.065,
+        0.553
+      ],
+      "f1_score": [
+        0.649,
+        0.104,
+        0.56
+      ]
+    }
+  },
+  "ablation_metrics": {
+    "Elo_Only": {
+      "log_loss": 0.9815,
+      "brier_score": 0.5836,
+      "accuracy_pct": 54.04
+    },
+    "Elo_Plus_DC": {
+      "log_loss": 0.9756,
+      "brier_score": 0.5798,
+      "accuracy_pct": 54.74
+    },
+    "Elo_Form_Goals": {
+      "log_loss": 0.9974,
+      "brier_score": 0.5934,
+      "accuracy_pct": 54.21
+    },
+    "Elo_Form_Shots": {
+      "log_loss": 0.9854,
+      "brier_score": 0.5852,
+      "accuracy_pct": 54.91
+    },
+    "Full_Feature_Set": {
+      "log_loss": 0.9744,
+      "brier_score": 0.5789,
+      "accuracy_pct": 55.96
+    }
+  },
+  "model_correlations": {
+    "Market_Odds": {
+      "Market_Odds": 1.0,
+      "CatBoost_Raw_EloOnly": 0.922,
+      "CatBoost_Raw_FullFeat": 0.9,
+      "XGBoost_Raw_FullFeat": 0.828,
+      "DixonColes_Raw": 0.897,
+      "Optimized_Ensemble_FullFeat": 0.911
+    },
+    "CatBoost_Raw_EloOnly": {
+      "Market_Odds": 0.922,
+      "CatBoost_Raw_EloOnly": 1.0,
+      "CatBoost_Raw_FullFeat": 0.909,
+      "XGBoost_Raw_FullFeat": 0.852,
+      "DixonColes_Raw": 0.87,
+      "Optimized_Ensemble_FullFeat": 0.908
+    },
+    "CatBoost_Raw_FullFeat": {
+      "Market_Odds": 0.9,
+      "CatBoost_Raw_EloOnly": 0.909,
+      "CatBoost_Raw_FullFeat": 1.0,
+      "XGBoost_Raw_FullFeat": 0.933,
+      "DixonColes_Raw": 0.895,
+      "Optimized_Ensemble_FullFeat": 0.966
+    },
+    "XGBoost_Raw_FullFeat": {
+      "Market_Odds": 0.828,
+      "CatBoost_Raw_EloOnly": 0.852,
+      "CatBoost_Raw_FullFeat": 0.933,
+      "XGBoost_Raw_FullFeat": 1.0,
+      "DixonColes_Raw": 0.823,
+      "Optimized_Ensemble_FullFeat": 0.901
+    },
+    "DixonColes_Raw": {
+      "Market_Odds": 0.897,
+      "CatBoost_Raw_EloOnly": 0.87,
+      "CatBoost_Raw_FullFeat": 0.895,
+      "XGBoost_Raw_FullFeat": 0.823,
+      "DixonColes_Raw": 1.0,
+      "Optimized_Ensemble_FullFeat": 0.964
+    },
+    "Optimized_Ensemble_FullFeat": {
+      "Market_Odds": 0.911,
+      "CatBoost_Raw_EloOnly": 0.908,
+      "CatBoost_Raw_FullFeat": 0.966,
+      "XGBoost_Raw_FullFeat": 0.901,
+      "DixonColes_Raw": 0.964,
+      "Optimized_Ensemble_FullFeat": 1.0
+    }
+  },
+  "confusion_matrix_best_model": [
+    [
+      194,
+      0,
+      47
+    ],
+    [
+      88,
+      0,
+      51
+    ],
+    [
+      70,
+      0,
+      120
+    ]
+  ]
+}

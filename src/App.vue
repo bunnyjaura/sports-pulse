@@ -16,6 +16,8 @@
 
       <PastMatchesTester v-else-if="currentTab === 'pastmatches'" />
 
+      <PredictionAnalyticsDashboard v-else-if="currentTab === 'analytics'" />
+
       <DashboardOverview v-else-if="currentTab === 'dashboard'" />
       
       <WalkForwardTester v-else-if="currentTab === 'walkforward'" />
@@ -39,6 +41,7 @@ import { ref } from 'vue';
 import HeaderNav from './components/HeaderNav.vue';
 import UpcomingFixtures from './components/UpcomingFixtures.vue';
 import PastMatchesTester from './components/PastMatchesTester.vue';
+import PredictionAnalyticsDashboard from './components/PredictionAnalyticsDashboard.vue';
 import DashboardOverview from './components/DashboardOverview.vue';
 import WalkForwardTester from './components/WalkForwardTester.vue';
 import MonteCarloLab from './components/MonteCarloLab.vue';

@@ -25,21 +25,25 @@ export class LiveFixtureService {
       const lg = SUPPORTED_LEAGUES[key];
       if (!lg) continue;
 
-      try {
-        const url = `https://site.api.espn.com/apis/site/v2/sports/soccer/${lg.espnSlug}/scoreboard`;
-        const res = await fetch(url);
-        if (!res.ok) continue;
+      const slugsToTry = key === 'INT_FRIENDLY' ? ['club.friendly', 'global.friendly', 'intl.friendly'] : [lg.espnSlug];
 
-        const data = await res.json();
-        if (data && data.events && Array.isArray(data.events)) {
-          isLiveApiAvailable = true;
-          for (const event of data.events) {
-            const normalized = normalizeEspnEvent(event, key);
-            if (normalized) allRawFixtures.push(normalized);
+      for (const slug of slugsToTry) {
+        try {
+          const url = `https://site.api.espn.com/apis/site/v2/sports/soccer/${slug}/scoreboard`;
+          const res = await fetch(url);
+          if (!res.ok) continue;
+
+          const data = await res.json();
+          if (data && data.events && Array.isArray(data.events)) {
+            isLiveApiAvailable = true;
+            for (const event of data.events) {
+              const normalized = normalizeEspnEvent(event, key);
+              if (normalized) allRawFixtures.push(normalized);
+            }
           }
+        } catch (err) {
+          console.warn(`ESPN API fetch failed for ${lg.name} (${slug}):`, err);
         }
-      } catch (err) {
-        console.warn(`ESPN API fetch failed for ${lg.name}:`, err);
       }
     }
 

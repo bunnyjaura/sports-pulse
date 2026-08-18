@@ -78,7 +78,7 @@ export function predictMatch({ homeTeam, awayTeam, kickoffAt = null, historicalM
     : (p_draw >= p_away ? 'Draw' : 'Away');
 
   return {
-    model_version: 'football-ensemble-v1',
+    model_version: 'football-ensemble-v2',
     status: 'SUCCESS',
     probabilities: {
       home: p_home,
@@ -97,7 +97,19 @@ export function predictMatch({ homeTeam, awayTeam, kickoffAt = null, historicalM
         away: p_dc.away
       }
     },
+    ensembleWeights: {
+      catboost: 0.50,
+      dixonColes: 0.50
+    },
     predictedOutcome,
+    expectedGoals: {
+      home: dcPred.expectedGoalsHome,
+      away: dcPred.expectedGoalsAway
+    },
+    overUnder: dcPred.overUnder,
+    btts: dcPred.btts,
+    mostLikelyScore: dcPred.mostLikelyScore,
+    confidence: Math.round(Math.max(p_home, p_draw, p_away) * 100) + '%',
     dataSufficiency: sufficiency,
     generatedAt: new Date().toISOString(),
     historicalCutoff: cutoff,
