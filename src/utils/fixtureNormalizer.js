@@ -9,12 +9,21 @@ export const SUPPORTED_LEAGUES = {
   'ITA_SERIEA': { id: 'ITA_SERIEA', name: 'Serie A', country: 'Italy', espnSlug: 'ita.1', sportsDbId: '4331' },
   'GER_BUNDESLIGA': { id: 'GER_BUNDESLIGA', name: 'Bundesliga', country: 'Germany', espnSlug: 'ger.1', sportsDbId: '4332' },
   'FRA_LIGUE1': { id: 'FRA_LIGUE1', name: 'Ligue 1', country: 'France', espnSlug: 'fra.1', sportsDbId: '4334' },
+  'ENG_CHAMPIONSHIP': { id: 'ENG_CHAMPIONSHIP', name: 'EFL Championship', country: 'England', espnSlug: 'eng.2', sportsDbId: '4329' },
+  'NED_EREDIVISIE': { id: 'NED_EREDIVISIE', name: 'Dutch Eredivisie', country: 'Netherlands', espnSlug: 'ned.1', sportsDbId: '4337' },
+  'POR_PRIMEIRA': { id: 'POR_PRIMEIRA', name: 'Primeira Liga', country: 'Portugal', espnSlug: 'por.1', sportsDbId: '4344' },
+  'USA_MLS': { id: 'USA_MLS', name: 'Major League Soccer', country: 'USA', espnSlug: 'usa.1', sportsDbId: '4346' },
+  'KSA_PRO': { id: 'KSA_PRO', name: 'Saudi Pro League', country: 'Saudi Arabia', espnSlug: 'ksa.1', sportsDbId: '4667' },
   'UEFA_CL': { id: 'UEFA_CL', name: 'UEFA Champions League', country: 'Europe', espnSlug: 'uefa.champions', sportsDbId: '4387' },
+  'UEFA_EL': { id: 'UEFA_EL', name: 'UEFA Europa League', country: 'Europe', espnSlug: 'uefa.europa', sportsDbId: '4388' },
+  'UEFA_ECL': { id: 'UEFA_ECL', name: 'UEFA Conference League', country: 'Europe', espnSlug: 'uefa.europa.conference', sportsDbId: '4480' },
+  'UEFA_NATIONS': { id: 'UEFA_NATIONS', name: 'UEFA Nations League', country: 'Europe', espnSlug: 'uefa.nations', sportsDbId: '4442' },
+  'CONMEBOL_LIBERTADORES': { id: 'CONMEBOL_LIBERTADORES', name: 'Copa Libertadores', country: 'South America', espnSlug: 'conmebol.libertadores', sportsDbId: '4482' },
+  'CONMEBOL_SUDAMERICANA': { id: 'CONMEBOL_SUDAMERICANA', name: 'Copa Sudamericana', country: 'South America', espnSlug: 'conmebol.sudamericana', sportsDbId: '4483' },
   'AUS_CUP': { id: 'AUS_CUP', name: 'Australia Cup', country: 'Australia', espnSlug: 'aus.cup', sportsDbId: '4426' },
   'AUS_ALEAGUE': { id: 'AUS_ALEAGUE', name: 'Australia A-League', country: 'Australia', espnSlug: 'aus.1', sportsDbId: '4356' },
   'CHN_CSL': { id: 'CHN_CSL', name: 'Chinese Football Super League', country: 'China', espnSlug: 'chn.1', sportsDbId: '4353' },
-  'AFF_CHAMPIONSHIP': { id: 'AFF_CHAMPIONSHIP', name: 'AFF Championship', country: 'Southeast Asia', espnSlug: 'aff.championship', sportsDbId: '4445' },
-  'INT_FRIENDLY': { id: 'INT_FRIENDLY', name: 'International Club Friendly', country: 'Global', espnSlug: 'club.friendly', sportsDbId: '4452', competitionType: 'FRIENDLY' }
+  'AFF_CHAMPIONSHIP': { id: 'AFF_CHAMPIONSHIP', name: 'AFF Championship', country: 'Southeast Asia', espnSlug: 'aff.championship', sportsDbId: '4445' }
 };
 
 /**

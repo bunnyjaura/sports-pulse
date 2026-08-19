@@ -32,6 +32,22 @@
         </button>
       </div>
 
+      <!-- Team & Competition Search Input Bar -->
+      <div class="search-filter-wrapper">
+        <div class="search-box font-mono">
+          <Search :size="16" class="search-icon text-cyan" />
+          <input 
+            type="text" 
+            v-model="searchQuery" 
+            placeholder="Search team or competition (e.g. Arsenal, Real Madrid, Bayern, Chelsea...)"
+            class="search-input"
+          />
+          <button v-if="searchQuery" @click="searchQuery = ''" class="btn-clear-search" title="Clear Search">
+            <X :size="14" />
+          </button>
+        </div>
+      </div>
+
       <!-- Date Filter Pills -->
       <div v-if="availableDates.length > 1" class="date-filter-group font-mono margin-top">
         <button 
@@ -226,7 +242,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { Calendar, Sparkles, X, RefreshCw, Activity } from 'lucide-vue-next';
+import { Calendar, Sparkles, X, RefreshCw, Activity, Search } from 'lucide-vue-next';
 import { LiveFixtureService } from '../services/liveFixtureService';
 import { HistoricalMatchService } from '../services/historicalMatchService';
 import { predictMatch } from '../utils/predictionEngine';
@@ -234,6 +250,7 @@ import { SUPPORTED_LEAGUES } from '../utils/fixtureNormalizer';
 
 const selectedLeague = ref('ALL');
 const selectedDate = ref('ALL');
+const searchQuery = ref('');
 const selectedFixtureModal = ref(null);
 const activePrediction = ref(null);
 
@@ -248,7 +265,17 @@ const leagueOptions = computed(() => ({
 }));
 
 const filteredFixtures = computed(() => {
-  return LiveFixtureService.filterByLeague(apiFixtures.value, selectedLeague.value);
+  let list = LiveFixtureService.filterByLeague(apiFixtures.value, selectedLeague.value);
+  if (searchQuery.value && searchQuery.value.trim()) {
+    const q = searchQuery.value.trim().toLowerCase();
+    list = list.filter(f => {
+      const home = (f.homeTeam?.name || f.homeTeam || '').toLowerCase();
+      const away = (f.awayTeam?.name || f.awayTeam || '').toLowerCase();
+      const leagueName = (f.league?.name || f.league || '').toLowerCase();
+      return home.includes(q) || away.includes(q) || leagueName.includes(q);
+    });
+  }
+  return list;
 });
 
 function getISTDateString(isoStr) {
@@ -280,7 +307,13 @@ const filteredFixturesByDate = computed(() => {
     groups[dStr].push(fix);
   }
 
-  return groups;
+  const sortedKeys = Object.keys(groups).sort();
+  const sortedGroups = {};
+  for (const key of sortedKeys) {
+    sortedGroups[key] = groups[key];
+  }
+
+  return sortedGroups;
 });
 
 onMounted(async () => {
@@ -398,6 +431,58 @@ function formatDisplayDate(dateStr) {
   padding: 6px;
   border-radius: 8px;
   border: 1px solid var(--border-color);
+}
+
+.search-filter-wrapper {
+  margin-top: 10px;
+}
+
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: rgba(7, 11, 18, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 8px 12px;
+  gap: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-box:focus-within {
+  border-color: var(--primary-cyan);
+  box-shadow: 0 0 12px rgba(0, 242, 254, 0.15);
+}
+
+.search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-size: 0.88rem;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+  font-size: 0.84rem;
+}
+
+.btn-clear-search {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.2s;
+}
+
+.btn-clear-search:hover {
+  color: var(--primary-cyan);
 }
 
 .btn-league {

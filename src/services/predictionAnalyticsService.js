@@ -16,11 +16,21 @@ export const LEAGUE_NAME_MAP = {
   'GER_BUNDESLIGA': 'Bundesliga',
   'ITA_SERIEA': 'Serie A',
   'FRA_LIGUE1': 'Ligue 1',
+  'ENG_CHAMPIONSHIP': 'EFL Championship',
+  'NED_EREDIVISIE': 'Dutch Eredivisie',
+  'POR_PRIMEIRA': 'Primeira Liga',
+  'USA_MLS': 'Major League Soccer',
+  'KSA_PRO': 'Saudi Pro League',
+  'UEFA_CL': 'UEFA Champions League',
+  'UEFA_EL': 'UEFA Europa League',
+  'UEFA_ECL': 'UEFA Conference League',
+  'UEFA_NATIONS': 'UEFA Nations League',
+  'CONMEBOL_LIBERTADORES': 'Copa Libertadores',
+  'CONMEBOL_SUDAMERICANA': 'Copa Sudamericana',
   'AUS_CUP': 'Australia Cup',
   'AUS_ALEAGUE': 'Australia A-League',
   'CHN_CSL': 'Chinese Football Super League',
-  'AFF_CHAMPIONSHIP': 'AFF Championship',
-  'INT_FRIENDLY': 'International Club Friendly'
+  'AFF_CHAMPIONSHIP': 'AFF Championship'
 };
 
 export class PredictionAnalyticsService {

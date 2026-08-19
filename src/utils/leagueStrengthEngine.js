@@ -9,7 +9,17 @@ const LEAGUE_COEFFICIENTS = {
   'ITA_SERIEA': 0.94,
   'GER_BUNDESLIGA': 0.94,
   'FRA_LIGUE1': 0.88,
-  'UEFA_CL': 1.05
+  'ENG_CHAMPIONSHIP': 0.85,
+  'NED_EREDIVISIE': 0.86,
+  'POR_PRIMEIRA': 0.87,
+  'USA_MLS': 0.80,
+  'KSA_PRO': 0.82,
+  'UEFA_CL': 1.05,
+  'UEFA_EL': 1.01,
+  'UEFA_ECL': 0.96,
+  'UEFA_NATIONS': 0.95,
+  'CONMEBOL_LIBERTADORES': 0.92,
+  'CONMEBOL_SUDAMERICANA': 0.88
 };
 
 export function computeLeagueStrength(leagueHome = 'ENG_PL', leagueAway = 'ENG_PL') {
