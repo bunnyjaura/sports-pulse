@@ -23,7 +23,26 @@ export const SUPPORTED_LEAGUES = {
   'AUS_CUP': { id: 'AUS_CUP', name: 'Australia Cup', country: 'Australia', espnSlug: 'aus.cup', sportsDbId: '4426' },
   'AUS_ALEAGUE': { id: 'AUS_ALEAGUE', name: 'Australia A-League', country: 'Australia', espnSlug: 'aus.1', sportsDbId: '4356' },
   'CHN_CSL': { id: 'CHN_CSL', name: 'Chinese Football Super League', country: 'China', espnSlug: 'chn.1', sportsDbId: '4353' },
-  'AFF_CHAMPIONSHIP': { id: 'AFF_CHAMPIONSHIP', name: 'AFF Championship', country: 'Southeast Asia', espnSlug: 'aff.championship', sportsDbId: '4445' }
+  'AFF_CHAMPIONSHIP': { id: 'AFF_CHAMPIONSHIP', name: 'AFF Championship', country: 'Southeast Asia', espnSlug: 'aff.championship', sportsDbId: '4445' },
+  'ARG_PRIMERA': { id: 'ARG_PRIMERA', name: 'Primera LFP', country: 'Argentina', espnSlug: 'arg.1', sportsDbId: '4406' },
+  'AUT_BUNDESLIGA': { id: 'AUT_BUNDESLIGA', name: 'Austrian Bundesliga', country: 'Austria', espnSlug: 'aut.1', sportsDbId: '4384' },
+  'BEL_PRO_LEAGUE': { id: 'BEL_PRO_LEAGUE', name: 'Belgian First Division A', country: 'Belgium', espnSlug: 'bel.1', sportsDbId: '4338' },
+  'BRA_SERIEA': { id: 'BRA_SERIEA', name: 'Brasileirão Série A', country: 'Brazil', espnSlug: 'bra.1', sportsDbId: '4351' },
+  'COL_PRIMERA': { id: 'COL_PRIMERA', name: 'Primera A', country: 'Colombia', espnSlug: 'col.1', sportsDbId: '4405' },
+  'DEN_SUPERLIGA': { id: 'DEN_SUPERLIGA', name: 'Danish Superligaen', country: 'Denmark', espnSlug: 'den.1', sportsDbId: '4340' },
+  'GER_2BUNDESLIGA': { id: 'GER_2BUNDESLIGA', name: '2. Bundesliga', country: 'Germany', espnSlug: 'ger.2', sportsDbId: '4333' },
+  'CONCACAF_LEAGUES_CUP': { id: 'CONCACAF_LEAGUES_CUP', name: 'Leagues Cup', country: 'North America', espnSlug: 'concacaf.leagues.cup', sportsDbId: '5160' },
+  'AFC_CL': { id: 'AFC_CL', name: 'AFC Champions League', country: 'Asia', espnSlug: 'afc.champions', sportsDbId: '4496' },
+  'JPN_J1': { id: 'JPN_J1', name: 'J1 League', country: 'Japan', espnSlug: 'jpn.1', sportsDbId: '4399' },
+  'MEX_LIGAMX': { id: 'MEX_LIGAMX', name: 'Liga MX', country: 'Mexico', espnSlug: 'mex.1', sportsDbId: '4350' },
+  'NOR_ELITESERIEN': { id: 'NOR_ELITESERIEN', name: 'Norwegian Eliteserien', country: 'Norway', espnSlug: 'nor.1', sportsDbId: '4355' },
+  'POL_EKSTRAKLASA': { id: 'POL_EKSTRAKLASA', name: 'Polish Ekstraklasa', country: 'Poland', espnSlug: 'pol.1', sportsDbId: '4389' },
+  'KOR_KLEAGUE1': { id: 'KOR_KLEAGUE1', name: 'K League 1', country: 'Republic of Korea', espnSlug: 'kor.1', sportsDbId: '4443' },
+  'SCO_PREMIERSHIP': { id: 'SCO_PREMIERSHIP', name: 'Scottish Premiership', country: 'Scotland', espnSlug: 'sco.1', sportsDbId: '4339' },
+  'ESP_LALIGA2': { id: 'ESP_LALIGA2', name: 'La Liga 2', country: 'Spain', espnSlug: 'esp.2', sportsDbId: '4396' },
+  'SWE_ALLSVENSKAN': { id: 'SWE_ALLSVENSKAN', name: 'Swedish Allsvenskan', country: 'Sweden', espnSlug: 'swe.1', sportsDbId: '4347' },
+  'SUI_SUPERLEAGUE': { id: 'SUI_SUPERLEAGUE', name: 'Swiss Super League', country: 'Switzerland', espnSlug: 'sui.1', sportsDbId: '4394' },
+  'TUR_SUPERLIG': { id: 'TUR_SUPERLIG', name: 'Turkish Süper Lig', country: 'Turkiye', espnSlug: 'tur.1', sportsDbId: '4385' }
 };
 
 /**
@@ -61,7 +80,14 @@ export function normalizeEspnEvent(event, leagueKey) {
     }
   }
 
-  const kickoffAt = event.date || comp.date;
+  const rawKickoff = event.date || comp.date;
+  let kickoffIso = new Date().toISOString();
+  if (rawKickoff) {
+    const parsedDate = new Date(rawKickoff);
+    if (!isNaN(parsedDate.getTime())) {
+      kickoffIso = parsedDate.toISOString();
+    }
+  }
 
   return {
     fixtureId: `espn-${event.id}`,
@@ -76,7 +102,7 @@ export function normalizeEspnEvent(event, leagueKey) {
       name: awayComp.team.displayName || awayComp.team.name,
       logo: awayComp.team.logo
     },
-    kickoffAt: new Date(kickoffAt).toISOString(),
+    kickoffAt: kickoffIso,
     status: statusCode,
     score: (homeComp.score !== undefined && awayComp.score !== undefined) ? {
       home: parseInt(homeComp.score, 10) || 0,
@@ -102,7 +128,13 @@ export function normalizeSportsDbEvent(evt, leagueKey) {
 
   const dateStr = evt.dateEvent;
   const timeStr = evt.strTime || '19:00:00';
-  const kickoffIso = new Date(`${dateStr}T${timeStr.split('+')[0]}Z`).toISOString();
+  let kickoffIso = new Date().toISOString();
+  if (dateStr) {
+    const parsedDate = new Date(`${dateStr}T${timeStr.split('+')[0]}Z`);
+    if (!isNaN(parsedDate.getTime())) {
+      kickoffIso = parsedDate.toISOString();
+    }
+  }
 
   return {
     fixtureId: `sdb-${evt.idEvent}`,

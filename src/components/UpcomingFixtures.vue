@@ -279,9 +279,8 @@ const filteredFixtures = computed(() => {
 });
 
 function getISTDateString(isoStr) {
-  if (!isoStr) return '2026-08-18';
-  const d = new Date(isoStr);
-  if (isNaN(d.getTime())) return '2026-08-18';
+  let d = isoStr ? new Date(isoStr) : new Date();
+  if (isNaN(d.getTime())) d = new Date();
   const istDate = new Date(d.getTime() + (5.5 * 3600 * 1000));
   const yyyy = istDate.getUTCFullYear();
   const mm = String(istDate.getUTCMonth() + 1).padStart(2, '0');

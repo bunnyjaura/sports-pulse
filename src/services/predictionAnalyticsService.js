@@ -30,7 +30,26 @@ export const LEAGUE_NAME_MAP = {
   'AUS_CUP': 'Australia Cup',
   'AUS_ALEAGUE': 'Australia A-League',
   'CHN_CSL': 'Chinese Football Super League',
-  'AFF_CHAMPIONSHIP': 'AFF Championship'
+  'AFF_CHAMPIONSHIP': 'AFF Championship',
+  'ARG_PRIMERA': 'Primera LFP (Argentina)',
+  'AUT_BUNDESLIGA': 'Austrian Bundesliga',
+  'BEL_PRO_LEAGUE': 'Belgian First Division A',
+  'BRA_SERIEA': 'Brasileirão Série A',
+  'COL_PRIMERA': 'Primera A (Colombia)',
+  'DEN_SUPERLIGA': 'Danish Superligaen',
+  'GER_2BUNDESLIGA': '2. Bundesliga (Germany)',
+  'CONCACAF_LEAGUES_CUP': 'Leagues Cup',
+  'AFC_CL': 'AFC Champions League',
+  'JPN_J1': 'J1 League (Japan)',
+  'MEX_LIGAMX': 'Liga MX (Mexico)',
+  'NOR_ELITESERIEN': 'Norwegian Eliteserien',
+  'POL_EKSTRAKLASA': 'Polish Ekstraklasa',
+  'KOR_KLEAGUE1': 'K League 1 (Republic of Korea)',
+  'SCO_PREMIERSHIP': 'Scottish Premiership',
+  'ESP_LALIGA2': 'La Liga 2 (Spain)',
+  'SWE_ALLSVENSKAN': 'Swedish Allsvenskan',
+  'SUI_SUPERLEAGUE': 'Swiss Super League',
+  'TUR_SUPERLIG': 'Turkish Süper Lig'
 };
 
 export class PredictionAnalyticsService {
