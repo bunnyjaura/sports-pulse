@@ -32,8 +32,29 @@ export const TEAM_ALIAS_MAP = {
   'bayern munich': 'Bayern Munich',
   'bayern munchen': 'Bayern Munich',
   'bayer leverkusen': 'Leverkusen',
-  'leverkusen': 'Leverkusen'
+  'leverkusen': 'Leverkusen',
+  'malaga': 'Malaga',
+  'málaga': 'Malaga',
+  'lask': 'LASK Linz',
+  'lask linz': 'LASK Linz',
+  'shanghai sipg': 'Shanghai Port',
+  'shanghai port fc': 'Shanghai Port',
+  'melbourne city fc': 'Melbourne City',
+  'al hilal': 'Al-Hilal',
+  'al hilal sfc': 'Al-Hilal',
+  'al nassr': 'Al-Nassr',
+  'al nassr fc': 'Al-Nassr'
 };
+
+/**
+ * Strips Unicode diacritics/accents from a string using NFD decomposition.
+ * @param {string} str 
+ * @returns {string}
+ */
+export function stripDiacritics(str) {
+  if (!str || typeof str !== 'string') return '';
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+}
 
 /**
  * Returns canonical team name for any input team name string.
@@ -43,6 +64,8 @@ export const TEAM_ALIAS_MAP = {
 export function normalizeTeamName(rawName) {
   if (!rawName || typeof rawName !== 'string') return '';
   const trimmed = rawName.trim();
-  const lower = trimmed.toLowerCase();
-  return TEAM_ALIAS_MAP[lower] || trimmed;
+  const unaccented = stripDiacritics(trimmed);
+  const lowerUnaccented = unaccented.toLowerCase();
+  const lowerRaw = trimmed.toLowerCase();
+  return TEAM_ALIAS_MAP[lowerRaw] || TEAM_ALIAS_MAP[lowerUnaccented] || unaccented;
 }

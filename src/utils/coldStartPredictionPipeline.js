@@ -94,8 +94,9 @@ export function runColdStartPredictionPipeline({
   const homeTeamName = targetMatch?.homeTeam || targetMatch?.homeTeamName || homeTeam;
   const awayTeamName = targetMatch?.awayTeam || targetMatch?.awayTeamName || awayTeam;
   const cutoff = kickoffAt || (targetMatch ? targetMatch.kickoffAt || targetMatch.date : new Date().toISOString());
+  const cutoffMs = targetMatch?.kickoffAtMs || new Date(cutoff).getTime();
 
-  const target = targetMatch || { homeTeam: homeTeamName, awayTeam: awayTeamName, kickoffAt: cutoff };
+  const target = targetMatch || { homeTeam: homeTeamName, awayTeam: awayTeamName, kickoffAt: cutoff, kickoffAtMs: cutoffMs };
 
   if (!target || !homeTeamName || !awayTeamName) {
     return {
@@ -108,7 +109,12 @@ export function runColdStartPredictionPipeline({
   }
 
   // Step 2: Build pre-match historical state (t < T)
-  const state = buildPreMatchHistoricalState({ targetMatch: target, allMatches: historicalMatches });
+  const preFilteredHistory = (historicalMatches || []).filter(m => {
+    const mMs = m.kickoffAtMs || new Date(m.kickoffAt || m.date).getTime();
+    return !isNaN(mMs) && mMs < cutoffMs;
+  });
+
+  const state = buildPreMatchHistoricalState({ targetMatch: target, allMatches: preFilteredHistory });
   const teamAMatches = state.teamAHistory;
   const teamBMatches = state.teamBHistory;
 
@@ -224,10 +230,12 @@ export function runColdStartPredictionPipeline({
   if (minN >= 5) {
     const dcModel = trainDixonColesModel(state.preMatchMatches, cutoff);
     const dcPred = predictMatchDixonColes(homeTeamName, awayTeamName, dcModel, { eloDiff });
-    const shrink = Math.min(1.0, minN / (minN + 5.0));
-    homeScore = (1.0 - shrink) * homeScore + shrink * dcPred.homeWinProb;
-    drawScore = (1.0 - shrink) * drawScore + shrink * dcPred.drawProb;
-    awayScore = (1.0 - shrink) * awayScore + shrink * dcPred.awayWinProb;
+    if (dcPred && dcPred.status !== 'UNAVAILABLE') {
+      const shrink = Math.min(1.0, minN / (minN + 5.0));
+      homeScore = (1.0 - shrink) * homeScore + shrink * dcPred.homeWinProb;
+      drawScore = (1.0 - shrink) * drawScore + shrink * dcPred.drawProb;
+      awayScore = (1.0 - shrink) * awayScore + shrink * dcPred.awayWinProb;
+    }
   }
 
   for (const [feat, effW] of Object.entries(effectiveWeights)) {

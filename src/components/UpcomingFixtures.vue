@@ -135,13 +135,13 @@
             <Sparkles class="text-cyan" :size="22" />
             <div>
               <h3>Match Probability Output</h3>
-              <span class="sub-text font-mono">Model Version: <strong>football-ensemble-v1</strong></span>
+              <span class="sub-text font-mono">Model Version: <strong>{{ activePrediction?.modelVersion || 'football-ensemble-v1' }}</strong></span>
             </div>
           </div>
           <button class="close-btn" @click="selectedFixtureModal = null"><X :size="20" /></button>
         </div>
 
-        <div v-if="activePrediction" class="modal-body">
+        <div v-if="activePrediction && activePrediction.probabilities" class="modal-body">
           <div class="modal-matchup">
             <div class="m-team home">
               <span class="t font-heading">{{ selectedFixtureModal.homeTeam?.name || selectedFixtureModal.homeTeam }}</span>
@@ -150,6 +150,11 @@
             <div class="m-team away">
               <span class="t font-heading">{{ selectedFixtureModal.awayTeam?.name || selectedFixtureModal.awayTeam }}</span>
             </div>
+          </div>
+
+          <!-- LOW CONFIDENCE STRENGTH PRIOR BADGE -->
+          <div v-if="activePrediction.predictionMode === 'STRENGTH_PRIOR'" class="strength-prior-badge font-mono" style="margin-bottom: 14px; padding: 8px 12px; border-radius: 6px; background: rgba(245, 158, 11, 0.12); border: 1px solid rgba(245, 158, 11, 0.4); text-align: center; color: #f59e0b; font-size: 0.8rem; font-weight: 600;">
+            ⚠️ Low Confidence – Based on team strength & league ranking priors (Zero match logs in database)
           </div>
 
           <!-- Outcome Probabilities Display -->
@@ -207,14 +212,14 @@
           </div>
 
           <!-- Component Model Breakdown -->
-          <div class="component-breakdown font-mono">
+          <div class="component-breakdown font-mono" v-if="activePrediction.components">
             <h4 class="breakdown-title">📊 Component Model Breakdown (50/50 Ensemble)</h4>
             <div class="breakdown-grid">
-              <div class="b-card">
+              <div class="b-card" v-if="activePrediction.components.catboost">
                 <span class="b-title">CatBoost Tree Model (50%)</span>
                 <span>Home: {{ (activePrediction.components.catboost.home * 100).toFixed(1) }}% | Draw: {{ (activePrediction.components.catboost.draw * 100).toFixed(1) }}% | Away: {{ (activePrediction.components.catboost.away * 100).toFixed(1) }}%</span>
               </div>
-              <div class="b-card">
+              <div class="b-card" v-if="activePrediction.components.dixonColes">
                 <span class="b-title">Dixon-Coles Goal Model (50%)</span>
                 <span>Home: {{ (activePrediction.components.dixonColes.home * 100).toFixed(1) }}% | Draw: {{ (activePrediction.components.dixonColes.draw * 100).toFixed(1) }}% | Away: {{ (activePrediction.components.dixonColes.away * 100).toFixed(1) }}%</span>
               </div>
@@ -235,6 +240,31 @@
             <button class="btn-primary" @click="selectedFixtureModal = null">Close Prediction</button>
           </div>
         </div>
+
+        <!-- UNAVAILABLE PREDICTION FALLBACK CARD -->
+        <div v-else-if="activePrediction" class="modal-body font-mono">
+          <div class="modal-matchup" style="margin-bottom: 16px;">
+            <div class="m-team home">
+              <span class="t font-heading">{{ selectedFixtureModal.homeTeam?.name || selectedFixtureModal.homeTeam }}</span>
+            </div>
+            <div class="m-vs font-mono">VS</div>
+            <div class="m-team away">
+              <span class="t font-heading">{{ selectedFixtureModal.awayTeam?.name || selectedFixtureModal.awayTeam }}</span>
+            </div>
+          </div>
+
+          <div style="padding: 20px; border-radius: 10px; border: 1px solid rgba(245, 158, 11, 0.3); background: rgba(245, 158, 11, 0.05); text-align: center;">
+            <AlertCircle class="text-amber" :size="32" style="margin: 0 auto 10px auto; color: #f59e0b;" />
+            <h4 style="color: #f59e0b; font-weight: 700; margin-bottom: 6px;">Prediction Unavailable</h4>
+            <p style="color: #94a3b8; font-size: 0.85rem; line-height: 1.4;">
+              {{ activePrediction.reason || 'One or both teams lack sufficient pre-match historical records in the current dataset.' }}
+            </p>
+          </div>
+
+          <div class="modal-actions" style="margin-top: 16px;">
+            <button class="btn-primary" @click="selectedFixtureModal = null">Close</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -242,10 +272,10 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue';
-import { Calendar, Sparkles, X, RefreshCw, Activity, Search } from 'lucide-vue-next';
+import { Calendar, Sparkles, X, RefreshCw, Activity, Search, AlertCircle } from 'lucide-vue-next';
 import { LiveFixtureService } from '../services/liveFixtureService';
 import { HistoricalMatchService } from '../services/historicalMatchService';
-import { predictMatch } from '../utils/predictionEngine';
+import { routeMatchPrediction } from '../utils/predictionRouter';
 import { SUPPORTED_LEAGUES } from '../utils/fixtureNormalizer';
 
 const selectedLeague = ref('ALL');
@@ -339,7 +369,7 @@ function openPredictionModal(fix) {
   const homeName = fix.homeTeam?.name || fix.homeTeam;
   const awayName = fix.awayTeam?.name || fix.awayTeam;
 
-  activePrediction.value = predictMatch({
+  activePrediction.value = routeMatchPrediction({
     homeTeam: homeName,
     awayTeam: awayName,
     kickoffAt: fix.kickoffAt,

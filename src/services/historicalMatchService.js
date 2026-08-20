@@ -7,6 +7,7 @@
 import { HistoricalDataService } from './historicalDataService';
 import { normalizeKickoffDate } from '../utils/dateNormalizer';
 import { normalizeTeamName } from '../utils/teamNormalizer';
+import { getCanonicalTeamId } from '../utils/teamIdentity';
 import { getPreMatchDiagnostics } from '../utils/historicalDataDiagnostics';
 
 export class HistoricalMatchService {
@@ -36,37 +37,52 @@ export class HistoricalMatchService {
   }
 
   /**
-   * Retrieves team-level match history prior to target cutoff
+   * Retrieves team-level match history prior to target cutoff using canonical team ID matching.
    */
-  static getTeamHistory(matches, teamName, cutoff) {
+  static getTeamHistory(matches, teamNameOrId, cutoff) {
     const validMatches = this.getMatchesBefore(matches, cutoff);
-    const norm = normalizeTeamName(teamName).toLowerCase();
-    return validMatches.filter(m => 
-      normalizeTeamName(m.homeTeam).toLowerCase() === norm || 
-      normalizeTeamName(m.awayTeam).toLowerCase() === norm
-    );
+    const targetId = getCanonicalTeamId(teamNameOrId);
+    if (!targetId) return [];
+
+    return validMatches.filter(m => {
+      const hId = m.homeTeamId || getCanonicalTeamId(m.homeTeam);
+      const aId = m.awayTeamId || getCanonicalTeamId(m.awayTeam);
+      return hId === targetId || aId === targetId;
+    });
   }
 
   /**
-   * Evaluates minimum training history sufficiency and generates complete pre-match diagnostics.
+   * Evidence helper: checks if both teams have sufficient team history (>= 50 matches each) for full model.
+   */
+  static hasFullHistoryEvidence(homeCount, awayCount) {
+    return homeCount >= 50 && awayCount >= 50;
+  }
+
+  /**
+   * Evidence helper: checks if both teams have minimum team history (>= 1 match each) for cold start model.
+   */
+  static hasColdStartEvidence(homeCount, awayCount) {
+    return homeCount >= 1 && awayCount >= 1;
+  }
+
+  /**
+   * Evaluates minimum training history sufficiency based on individual team pre-kickoff match counts.
    */
   static evaluateDataSufficiency(trainingMatches, homeTeam, awayTeam, cutoff, allMatches = [], targetMatch = null) {
-    const count = trainingMatches.length;
     const homeHist = this.getTeamHistory(trainingMatches, homeTeam, cutoff);
     const awayHist = this.getTeamHistory(trainingMatches, awayTeam, cutoff);
 
     const homeCount = homeHist.length;
     const awayCount = awayHist.length;
 
+    const isSufficient = this.hasFullHistoryEvidence(homeCount, awayCount);
     let status = 'FULL_HISTORY';
-    let isSufficient = true;
 
-    if (count < 50) {
-      status = 'INSUFFICIENT_HISTORY';
-      isSufficient = false;
-    } else if (count < 200) {
+    if (!isSufficient) {
+      status = this.hasColdStartEvidence(homeCount, awayCount) ? 'LIMITED_HISTORY' : 'INSUFFICIENT_HISTORY';
+    } else if (Math.min(homeCount, awayCount) < 200) {
       status = 'LIMITED_HISTORY';
-    } else if (count < 500) {
+    } else if (Math.min(homeCount, awayCount) < 500) {
       status = 'MODERATE_HISTORY';
     }
 
@@ -75,7 +91,7 @@ export class HistoricalMatchService {
     return {
       status,
       isSufficient,
-      trainingMatchCount: count,
+      trainingMatchCount: trainingMatches.length,
       requiredMinimum: 50,
       homeHistoryCount: homeCount,
       awayHistoryCount: awayCount,
@@ -111,8 +127,8 @@ export class HistoricalMatchService {
 
     if (options.query) {
       const q = options.query.toLowerCase().trim();
-      filtered = filtered.filter(m => 
-        m.homeTeam.toLowerCase().includes(q) || 
+      filtered = filtered.filter(m =>
+        m.homeTeam.toLowerCase().includes(q) ||
         m.awayTeam.toLowerCase().includes(q)
       );
     }

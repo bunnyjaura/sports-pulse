@@ -7,6 +7,7 @@
 import { calculateWilsonConfidenceInterval, computeECE } from '../utils/confidenceIntervals';
 import { predictMatch } from '../utils/predictionEngine';
 import { runColdStartPredictionPipeline } from '../utils/coldStartPredictionPipeline';
+import { getCanonicalTeamId } from '../utils/teamIdentity';
 
 export const MINIMUM_SAMPLE_THRESHOLD = 100;
 
@@ -27,10 +28,11 @@ export const LEAGUE_NAME_MAP = {
   'UEFA_NATIONS': 'UEFA Nations League',
   'CONMEBOL_LIBERTADORES': 'Copa Libertadores',
   'CONMEBOL_SUDAMERICANA': 'Copa Sudamericana',
-  'AUS_CUP': 'Australia Cup',
+  // 'AUS_CUP': 'Australia Cup',
   'AUS_ALEAGUE': 'Australia A-League',
   'CHN_CSL': 'Chinese Football Super League',
-  'AFF_CHAMPIONSHIP': 'AFF Championship',
+  // 'AFF_CHAMPIONSHIP': 'AFF Championship',
+  // 'INT_FRIENDLY': 'International Club Friendly',
   'ARG_PRIMERA': 'Primera LFP (Argentina)',
   'AUT_BUNDESLIGA': 'Austrian Bundesliga',
   'BEL_PRO_LEAGUE': 'Belgian First Division A',
@@ -93,8 +95,10 @@ export class PredictionAnalyticsService {
         const actualBTTS = (fthg > 0 && ftag > 0) ? 'YES' : 'NO';
 
         // 1. Compute Pre-Kickoff Elo Rating Difference (t < T)
-        const rH = eloMap[homeTeam] || 1500;
-        const rA = eloMap[awayTeam] || 1500;
+        const hId = target.homeTeamId || getCanonicalTeamId(homeTeam);
+        const aId = target.awayTeamId || getCanonicalTeamId(awayTeam);
+        const rH = eloMap[hId] || 1500;
+        const rA = eloMap[aId] || 1500;
         const eloDiff = rH - rA;
 
         // 2. Football Ensemble V2 Model (CatBoost + Dixon-Coles surrogate logits)
@@ -205,10 +209,10 @@ export class PredictionAnalyticsService {
         const mult = diffG === 2 ? 1.25 : (diffG >= 3 ? 1.5 : 1.0);
         const delta = Math.round(K * mult * (actualH - expHomeProb));
 
-        eloMap[homeTeam] = rH + delta;
-        eloMap[awayTeam] = rA - delta;
-        teamMatchCounts[homeTeam] = (teamMatchCounts[homeTeam] || 0) + 1;
-        teamMatchCounts[awayTeam] = (teamMatchCounts[awayTeam] || 0) + 1;
+        eloMap[hId] = rH + delta;
+        eloMap[aId] = rA - delta;
+        teamMatchCounts[hId] = (teamMatchCounts[hId] || 0) + 1;
+        teamMatchCounts[aId] = (teamMatchCounts[aId] || 0) + 1;
       }
 
       this.processedCache = processedRecords;

@@ -20,7 +20,7 @@ export function auditTargetIsolation(targetMatch, trainingMatches = []) {
   let postKickoffEvidenceUsed = 0;
 
   for (const m of trainingMatches) {
-    if (m.id === targetId) {
+    if (targetId && (m.id === targetId || m.matchId === targetId)) {
       targetMatchUsed = true;
     }
     const mMs = m.kickoffAtMs || new Date(m.kickoffAt || m.date).getTime();

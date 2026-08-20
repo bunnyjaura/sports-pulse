@@ -9,6 +9,7 @@
 import { computeEloDatabase } from './eloEngine';
 import { trainDixonColesModel, predictMatchDixonColes } from './dixonColes';
 import { HistoricalMatchService } from '../services/historicalMatchService';
+import { getCanonicalTeamId } from './teamIdentity';
 
 /**
  * Predicts match outcome probabilities using 50/50 CatBoost + Dixon-Coles ensemble.
@@ -24,27 +25,57 @@ import { HistoricalMatchService } from '../services/historicalMatchService';
 export function predictMatch({ homeTeam, awayTeam, kickoffAt = null, historicalMatches = [], historicalCutoff = null }) {
   const cutoff = historicalCutoff || kickoffAt || new Date().toISOString();
 
-  // 1. Filter historical matches strictly prior to cutoff (< cutoff)
-  const validHistory = HistoricalMatchService.getMatchesBefore(historicalMatches, cutoff);
+  const homeTeamId = getCanonicalTeamId(homeTeam);
+  const awayTeamId = getCanonicalTeamId(awayTeam);
 
-  // 2. Evaluate Minimum Data Sufficiency (N >= 50)
-  const sufficiency = HistoricalMatchService.evaluateDataSufficiency(validHistory, homeTeam, awayTeam, cutoff);
-
-  if (!sufficiency.isSufficient) {
+  if (!homeTeamId || !awayTeamId) {
     return {
-      model_version: 'football-ensemble-v1',
-      status: 'INSUFFICIENT_HISTORY',
-      reason: `Insufficient historical data before cutoff (N=${sufficiency.trainingMatchCount}, required N>=50)`,
-      dataSufficiency: sufficiency,
+      model_version: 'football-ensemble-v2',
+      status: 'UNAVAILABLE',
+      reasonCode: 'INVALID_TEAM_IDENTITY',
+      probabilities: null,
       generatedAt: new Date().toISOString(),
       historicalCutoff: cutoff
     };
   }
 
-  // 3. Compute Pre-Match Elo Ratings strictly up to cutoff
+  // 1. Filter historical matches strictly prior to cutoff (< cutoff)
+  const validHistory = HistoricalMatchService.getMatchesBefore(historicalMatches, cutoff);
+
+  // 2. Evaluate Minimum Data Sufficiency per team (N >= 50 for each team)
+  const sufficiency = HistoricalMatchService.evaluateDataSufficiency(validHistory, homeTeam, awayTeam, cutoff);
+
+  if (!sufficiency.isSufficient) {
+    return {
+      model_version: 'football-ensemble-v2',
+      status: 'INSUFFICIENT_HISTORY',
+      reasonCode: 'INSUFFICIENT_TEAM_HISTORY',
+      reason: `Insufficient historical data before cutoff (Home N=${sufficiency.homeHistoryCount}, Away N=${sufficiency.awayHistoryCount}, required N>=50 per team)`,
+      dataSufficiency: sufficiency,
+      probabilities: null,
+      generatedAt: new Date().toISOString(),
+      historicalCutoff: cutoff
+    };
+  }
+
+  // 3. Compute Pre-Match Elo Ratings strictly up to cutoff using canonical IDs
   const eloDb = computeEloDatabase(validHistory, cutoff);
-  const homeElo = eloDb[homeTeam] || 1500;
-  const awayElo = eloDb[awayTeam] || 1500;
+  const homeElo = eloDb[homeTeamId];
+  const awayElo = eloDb[awayTeamId];
+
+  // REMOVE SILENT FALLBACK: If Elo rating is missing, return UNAVAILABLE
+  if (homeElo === undefined || awayElo === undefined) {
+    return {
+      model_version: 'football-ensemble-v2',
+      status: 'UNAVAILABLE',
+      reasonCode: 'MISSING_TEAM_ELO_RATING',
+      reason: `Pre-match Elo rating not found for one or both teams (homeElo=${homeElo}, awayElo=${awayElo})`,
+      probabilities: null,
+      generatedAt: new Date().toISOString(),
+      historicalCutoff: cutoff
+    };
+  }
+
   const eloDiff = homeElo - awayElo;
 
   // 4. CatBoost Tree Classifier (EloDiff -> 3-Class Probabilities)
@@ -53,6 +84,19 @@ export function predictMatch({ homeTeam, awayTeam, kickoffAt = null, historicalM
   // 5. Dixon-Coles Expected Goals Model (fitted on pre-kickoff scorelines)
   const dcModel = trainDixonColesModel(validHistory, cutoff);
   const dcPred = predictMatchDixonColes(homeTeam, awayTeam, dcModel, { eloDiff });
+
+  // REMOVE SILENT FALLBACK: If Dixon-Coles parameters are missing, return UNAVAILABLE
+  if (dcPred.status === 'UNAVAILABLE') {
+    return {
+      model_version: 'football-ensemble-v2',
+      status: 'UNAVAILABLE',
+      reasonCode: dcPred.reasonCode || 'MISSING_TEAM_DIXON_COLES_PARAMETERS',
+      reason: 'Dixon-Coles parameters missing for team',
+      probabilities: null,
+      generatedAt: new Date().toISOString(),
+      historicalCutoff: cutoff
+    };
+  }
 
   const p_dc = {
     home: dcPred.homeWinProb,
@@ -114,12 +158,18 @@ export function predictMatch({ homeTeam, awayTeam, kickoffAt = null, historicalM
     generatedAt: new Date().toISOString(),
     historicalCutoff: cutoff,
     meta: {
+      homeTeamId,
+      awayTeamId,
       homeElo,
       awayElo,
       eloDiff,
       trainingMatchCount: validHistory.length,
-      homeSource: sufficiency.homeSource,
-      awaySource: sufficiency.awaySource
+      homeHistoryCount: sufficiency.homeHistoryCount,
+      awayHistoryCount: sufficiency.awayHistoryCount,
+      homeEloSource: 'HISTORICAL',
+      awayEloSource: 'HISTORICAL',
+      homeParameterSource: 'HISTORICAL',
+      awayParameterSource: 'HISTORICAL'
     }
   };
 }

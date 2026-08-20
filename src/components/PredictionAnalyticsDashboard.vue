@@ -43,11 +43,8 @@
             <option value="GER_BUNDESLIGA">Bundesliga (Germany)</option>
             <option value="ITA_SERIEA">Serie A (Italy)</option>
             <option value="FRA_LIGUE1">Ligue 1 (France)</option>
-            <option value="AUS_CUP">Australia Cup (Australia)</option>
             <option value="AUS_ALEAGUE">Australia A-League (Australia)</option>
             <option value="CHN_CSL">Chinese Football Super League (China)</option>
-            <option value="AFF_CHAMPIONSHIP">AFF Championship (Southeast Asia)</option>
-            <option value="INT_FRIENDLY">International Club Friendly</option>
           </select>
         </div>
 

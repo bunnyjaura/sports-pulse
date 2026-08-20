@@ -10,9 +10,17 @@
 import { normalizeTeamName, TEAM_ALIAS_MAP } from './teamNormalizer';
 
 export function getCanonicalTeamId(teamNameOrId = '') {
+  if (!teamNameOrId || typeof teamNameOrId !== 'string') return '';
   const norm = normalizeTeamName(teamNameOrId);
-  return norm.toLowerCase().replace(/\s+/g, '_');
+  return norm.toLowerCase().replace(/[^a-z0-9\s_]/g, '').trim().replace(/\s+/g, '_');
 }
+
+export function resolveTeamIdentity(teamNameOrId = '') {
+  const displayName = normalizeTeamName(teamNameOrId);
+  const teamId = getCanonicalTeamId(teamNameOrId);
+  return { teamId, displayName };
+}
+
 
 export function sameTeam(teamA = '', teamB = '') {
   const res = resolveTeamIdentityMatch(teamA, teamB);

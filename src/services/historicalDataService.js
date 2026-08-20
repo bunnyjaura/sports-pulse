@@ -4,10 +4,12 @@
  */
 
 import rawMultiLeagueMatches from '../data/multiLeagueHistorical.json';
+import rawExtraLeaguesMatches from '../data/extraLeaguesHistorical.json';
 import rawSeason2025_26 from '../data/season2025_26Historical.json';
 import rawSeason2026_27 from '../data/season2026_27Historical.json';
 import { INITIAL_HISTORICAL_MATCHES } from '../data/historicalMatches';
 import { normalizeTeamName } from '../utils/teamNormalizer';
+import { getCanonicalTeamId } from '../utils/teamIdentity';
 import { normalizeKickoffDate } from '../utils/dateNormalizer';
 import { getHistoricalDatasetDiagnostics } from '../utils/historicalDataDiagnostics';
 
@@ -39,6 +41,7 @@ export class HistoricalDataService {
     }
 
     const raw = (rawMultiLeagueMatches || [])
+      .concat(rawExtraLeaguesMatches || [])
       .concat(rawSeason2025_26 || [])
       .concat(rawSeason2026_27 || [])
       .concat(INITIAL_HISTORICAL_MATCHES || []);
@@ -93,6 +96,8 @@ export class HistoricalDataService {
         season: calculatedSeason,
         homeTeam,
         awayTeam,
+        homeTeamId: getCanonicalTeamId(homeTeam),
+        awayTeamId: getCanonicalTeamId(awayTeam),
         kickoffAt: dateNorm.isoString,
         kickoffAtMs: dateNorm.timestampMs,
         date: dateNorm.isoString.split('T')[0],

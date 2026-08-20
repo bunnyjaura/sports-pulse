@@ -1,3 +1,5 @@
+import { getCanonicalTeamId } from './teamIdentity';
+
 // Dixon-Coles Poisson Expected Goals (xG) & Scoreline Matrix Engine
 
 export function poissonProbability(k, lambda) {
@@ -35,16 +37,20 @@ export function trainDixonColesModel(matches, cutoffDate = null) {
   });
 
   for (const m of validMatches) {
-    if (!teamStats[m.homeTeam]) teamStats[m.homeTeam] = { homeScored: 0, homeConceded: 0, homeGames: 0, awayScored: 0, awayConceded: 0, awayGames: 0 };
-    if (!teamStats[m.awayTeam]) teamStats[m.awayTeam] = { homeScored: 0, homeConceded: 0, homeGames: 0, awayScored: 0, awayConceded: 0, awayGames: 0 };
+    const hId = m.homeTeamId || getCanonicalTeamId(m.homeTeam);
+    const aId = m.awayTeamId || getCanonicalTeamId(m.awayTeam);
+    if (!hId || !aId) continue;
 
-    teamStats[m.homeTeam].homeScored += m.FTHG;
-    teamStats[m.homeTeam].homeConceded += m.FTAG;
-    teamStats[m.homeTeam].homeGames += 1;
+    if (!teamStats[hId]) teamStats[hId] = { homeScored: 0, homeConceded: 0, homeGames: 0, awayScored: 0, awayConceded: 0, awayGames: 0 };
+    if (!teamStats[aId]) teamStats[aId] = { homeScored: 0, homeConceded: 0, homeGames: 0, awayScored: 0, awayConceded: 0, awayGames: 0 };
 
-    teamStats[m.awayTeam].awayScored += m.FTAG;
-    teamStats[m.awayTeam].awayConceded += m.FTHG;
-    teamStats[m.awayTeam].awayGames += 1;
+    teamStats[hId].homeScored += m.FTHG;
+    teamStats[hId].homeConceded += m.FTAG;
+    teamStats[hId].homeGames += 1;
+
+    teamStats[aId].awayScored += m.FTAG;
+    teamStats[aId].awayConceded += m.FTHG;
+    teamStats[aId].awayGames += 1;
 
     totalHomeGoals += m.FTHG;
     totalAwayGoals += m.FTAG;
@@ -58,11 +64,11 @@ export function trainDixonColesModel(matches, cutoffDate = null) {
   const teamParameters = {};
   const allTeams = Object.keys(teamStats);
 
-  for (const team of allTeams) {
-    const s = teamStats[team];
+  for (const teamId of allTeams) {
+    const s = teamStats[teamId];
     const totalGames = s.homeGames + s.awayGames;
     if (totalGames === 0) {
-      teamParameters[team] = { attack: 1.0, defense: 1.0 };
+      teamParameters[teamId] = { attack: 1.0, defense: 1.0 };
       continue;
     }
 
@@ -70,7 +76,7 @@ export function trainDixonColesModel(matches, cutoffDate = null) {
     const goalsConcededPerGame = (s.homeConceded + s.awayConceded) / totalGames;
     const leagueAvgGoalsPerTeam = (avgHomeGoals + avgAwayGoals) / 2;
 
-    teamParameters[team] = {
+    teamParameters[teamId] = {
       attack: parseFloat((goalsScoredPerGame / (leagueAvgGoalsPerTeam || 1.3)).toFixed(3)),
       defense: parseFloat((goalsConcededPerGame / (leagueAvgGoalsPerTeam || 1.3)).toFixed(3)),
     };
@@ -86,8 +92,24 @@ export function trainDixonColesModel(matches, cutoffDate = null) {
 
 // Compute match probability distribution matrix (xG, score matrix, 1X2 probabilities)
 export function predictMatchDixonColes(homeTeam, awayTeam, model, options = {}) {
-  const homeParam = model.teamParameters[homeTeam] || { attack: 1.1, defense: 0.9 };
-  const awayParam = model.teamParameters[awayTeam] || { attack: 1.0, defense: 1.0 };
+  const homeId = getCanonicalTeamId(homeTeam);
+  const awayId = getCanonicalTeamId(awayTeam);
+
+  const homeParam = model?.teamParameters?.[homeId];
+  const awayParam = model?.teamParameters?.[awayId];
+
+  if (!homeParam || !awayParam) {
+    return {
+      status: 'UNAVAILABLE',
+      reasonCode: 'MISSING_TEAM_DIXON_COLES_PARAMETERS',
+      homeTeam,
+      awayTeam,
+      homeTeamId: homeId,
+      awayTeamId: awayId,
+      homeParamAvailable: !!homeParam,
+      awayParamAvailable: !!awayParam
+    };
+  }
 
   const homeAdvantageBoost = options.homeAdvantageBoost !== undefined ? options.homeAdvantageBoost : 0.35;
   const eloDiff = options.eloDiff || 0;

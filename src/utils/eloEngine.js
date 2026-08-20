@@ -1,5 +1,4 @@
-// Dynamic Elo Rating Engine for Sports Teams
-// Supports margin-of-victory multiplier and date-cutoff filtering
+import { getCanonicalTeamId } from './teamIdentity';
 
 export const INITIAL_ELO = 1500;
 export const DEFAULT_K_FACTOR = 32;
@@ -80,15 +79,20 @@ export function computeEloDatabase(matches, cutoffDate = null) {
       continue; // Strictly filter out future matches beyond cutoff
     }
 
-    if (!ratings[m.homeTeam]) ratings[m.homeTeam] = INITIAL_ELO;
-    if (!ratings[m.awayTeam]) ratings[m.awayTeam] = INITIAL_ELO;
+    const homeId = m.homeTeamId || getCanonicalTeamId(m.homeTeam);
+    const awayId = m.awayTeamId || getCanonicalTeamId(m.awayTeam);
+    if (!homeId || !awayId) continue;
+
+    if (!ratings[homeId]) ratings[homeId] = INITIAL_ELO;
+    if (!ratings[awayId]) ratings[awayId] = INITIAL_ELO;
 
     if (m.FTHG !== undefined && m.FTAG !== undefined) {
-      const res = updateEloRatings(ratings[m.homeTeam], ratings[m.awayTeam], m.FTHG, m.FTAG);
-      ratings[m.homeTeam] = res.newHomeElo;
-      ratings[m.awayTeam] = res.newAwayElo;
+      const res = updateEloRatings(ratings[homeId], ratings[awayId], m.FTHG, m.FTAG);
+      ratings[homeId] = res.newHomeElo;
+      ratings[awayId] = res.newAwayElo;
     }
   }
 
   return ratings;
 }
+

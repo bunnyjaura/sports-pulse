@@ -2,6 +2,7 @@
 
 import { computeEloDatabase, calculateEloExpectation, updateEloRatings, parseMatchDate } from './eloEngine';
 import { trainDixonColesModel, predictMatchDixonColes } from './dixonColes';
+import { getCanonicalTeamId } from './teamIdentity';
 
 export function runBaselineComparisonWalkForward(matches, options = {}) {
   const numFolds = options.numFolds || 5;
@@ -86,18 +87,23 @@ export function runBaselineComparisonWalkForward(matches, options = {}) {
       brierC += Math.pow(normH - yH, 2) + Math.pow(normD - yD, 2) + Math.pow(normA - yA, 2);
 
       // Current Model (Elo + Dixon Coles)
-      const hElo = eloDb[m.homeTeam] || 1500;
-      const aElo = eloDb[m.awayTeam] || 1500;
+      const hId = m.homeTeamId || getCanonicalTeamId(m.homeTeam);
+      const aId = m.awayTeamId || getCanonicalTeamId(m.awayTeam);
+      const hElo = eloDb[hId] || 1500;
+      const aElo = eloDb[aId] || 1500;
       const eloDiff = hElo - aElo;
 
       const dcPred = predictMatchDixonColes(m.homeTeam, m.awayTeam, dixonModel, { eloDiff });
+      const dcHome = (dcPred && dcPred.status !== 'UNAVAILABLE') ? dcPred.homeWinProb : 0.44;
+      const dcAway = (dcPred && dcPred.status !== 'UNAVAILABLE') ? dcPred.awayWinProb : 0.30;
+      const dcDraw = (dcPred && dcPred.status !== 'UNAVAILABLE') ? dcPred.drawProb : 0.26;
       const eloHomeProb = calculateEloExpectation(hElo + 65, aElo);
       const eloAwayProb = 1 - eloHomeProb;
       const eloDrawProb = 0.26;
 
-      let hP = 0.6 * dcPred.homeWinProb + 0.4 * eloHomeProb;
-      let aP = 0.6 * dcPred.awayWinProb + 0.4 * eloAwayProb;
-      let dP = 0.6 * dcPred.drawProb + 0.4 * eloDrawProb;
+      let hP = 0.6 * dcHome + 0.4 * eloHomeProb;
+      let aP = 0.6 * dcAway + 0.4 * eloAwayProb;
+      let dP = 0.6 * dcDraw + 0.4 * eloDrawProb;
 
       const totP = hP + dP + aP;
       hP /= totP; dP /= totP; aP /= totP;
